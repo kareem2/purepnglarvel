@@ -78,7 +78,7 @@ Route::middleware(['simpleAuth'])->group(function () {
 
 				foreach ($request->tags as $post_tag) {
 
-				    $tag = Tag::where('name', $post_tag)->first();
+				    $tag = Tag::where('slug', Str::slug($post_tag))->first();
 				    
 				    if (!is_null($tag)) {
 				        $tags[] = $tag->id;
@@ -114,6 +114,29 @@ Route::middleware(['simpleAuth'])->group(function () {
 	Route::get('/categories', function(Request $request){
 		return response()->json(Category::all());
 	});
+
+	Route::post('/categories/add', function(Request $request){
+
+		$request->merge([
+		    'slug' => Str::slug($request->name)
+		]);
+
+	    $request->validate([
+	        'name' => 'required',
+	        'slug' => 'unique:categories,slug',
+	    ]);
+
+	    $slug = $request->slug;
+
+	    $category = new Category();
+	    $category->name = $request->name;
+	    $category->slug = $slug;
+
+	    if($category->save()){
+	    	return response()->json($category, 202);
+	    }
+
+	});	
 
 	Route::get('/tags', function(Request $request){
 		return response()->json(Tag::all());
