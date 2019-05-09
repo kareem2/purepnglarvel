@@ -19,3 +19,8 @@ Route::get('/', function () {
 Route::get('/sample', function () {
     return view('pages.sample');
 });
+
+// Route::get('/test', function () {
+//     $posts = App\Post::all();
+//     dd($posts);
+// });
