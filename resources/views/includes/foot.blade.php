@@ -12,6 +12,8 @@
 <script src="{{ URL::asset('/js/functions.js') }}"></script>
 <script src="{{ URL::asset('/js/jquery.form.js') }}"></script>
 <script src="{{ URL::asset('/plugins/sweetalert/sweetalert.min.js') }}"></script>
+<script src="{{ URL::asset('/plugins/jquery.counterup/jquery.counterup.min.js') }}"></script>
+<script src="{{ URL::asset('/plugins/jquery.counterup/waypoints.min.js') }}"></script>
 
 <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 <script src="{{ URL::asset('/js/ie-emulation-modes-warning.js') }}"></script>
@@ -139,4 +141,20 @@ $(document).on('click','.comments-likes',function() {
  ]
 }
 </script>    
+
+<script type="text/javascript">
+
+     $('#imagesFlex').flexImages({ rowHeight: 220, maxRows: 8, truncate: true });
+
+
+    jQuery(document).ready(function( $ ) {
+      $('.counter').counterUp({
+      delay: 10, // the delay time in ms
+      time: 1000 // the speed time in ms
+      });
+    });
+
+     
+       
+    </script>
 This page took <strong>{{ (microtime(true) - LARAVEL_START) }} </strong> seconds to render  
