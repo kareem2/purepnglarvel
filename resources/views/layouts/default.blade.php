@@ -4,15 +4,8 @@
   @include('includes.head')
 </head>
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
-<body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-boxed page-md">
-
+<body>
     @include('includes.header')
-
-  <div class="clearfix"> </div>
-
-  <!-- Full Width Column -->
-
-    <div class="page-container">
       <div class="page-content-wrapper">
         <div class="page-content">
           <!-- Content Header (Page header) -->
@@ -26,15 +19,12 @@
           </div>
           <!-- Main content -->
           <div class="content">
-            <div class="container margin-bottom-40 padding-top-40">
               @yield('content')
-            </div>
             <!-- /.box -->
           </div>
           <!-- /.content -->
         <!-- /.content-wrapper -->
         @include('includes.footer')
-    </div>
     </div>
   </div>
 

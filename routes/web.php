@@ -16,9 +16,10 @@ Route::get('/', function () {
 });
 
 
-Route::get('/sample', function () {
-    return view('pages.sample');
-});
+
+Route::get('/photo/{post_id}', 'PostControler@show')->name('photo');
+Route::get('/tag/{tag_slug}', 'TagControler@show')->name('tag');
+Route::get('/user/{user_name}', 'UserControler@show')->name('user');
 
 // Route::get('/test', function () {
 //     $posts = App\Post::all();
