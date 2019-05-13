@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use App\Post;
 use App\Tag;
+use App\User;
 use App\Category;
 use Intervention\Image\ImageManager;
 
@@ -31,11 +32,13 @@ Route::middleware(['simpleAuth'])->group(function () {
 
 
 	    $request->validate([
-	        'user_id' => 'required',
+	        'user_id' => 'required_without:user_name|exists:users,id',
+	        'user_name' => 'required_without:user_id',
 	        'image_name' => 'required',
 	        'title' => 'required',
 	        'base64_image' => 'required',
-	        'category_id' => 'exists:categories,id'
+	        'category_id' => 'required_without:category_name|exists:categories,id',
+	        'category_name' => 'required_without:category_id',
 	    ]);
 
 		$post = new Post();
@@ -72,24 +75,40 @@ Route::middleware(['simpleAuth'])->group(function () {
 
 		if($saved_image){
 
+
+			// Check user:
+			if(is_null($request->user_id)){
+
+			    $user = User::firstOrCreate(
+			    	['name' => Str::slug($request->user_name)],
+			    	['name' => $request->user_name]);
+
+			    $post->user_id = $user->id;
+
+			}
+
+			// Check category:
+			if(is_null($request->category_id)){
+
+			    $category = Category::firstOrCreate(
+			    	['slug' => Str::slug($request->category_name)],
+			    	['name' => $request->category_name, 'slug' => Str::slug($request->category_name)]);
+
+			    $post->category_id = $category->id;
+
+			}
+
+			// Save post
 			if($post->save()){
 
 				$tags = [];
 
 				foreach ($request->tags as $post_tag) {
+				    $tag = Tag::firstOrCreate(
+				    	['slug' => Str::slug($post_tag)],
+				    	['name' => $post_tag, 'slug' => Str::slug($post_tag)]);
 
-				    $tag = Tag::where('slug', Str::slug($post_tag))->first();
-				    
-				    if (!is_null($tag)) {
-				        $tags[] = $tag->id;
-				    } else {
-				        $tag = new Tag();
-
-				        $tag->name = $post_tag;
-				        $tag->slug = Str::slug($post_tag);
-				        $tag->save();
-				        $tags[] = $tag->id;
-				    }				
+				    $tags[] = $tag->id;
 				}
 
 				$post->tags()->sync($tags);
