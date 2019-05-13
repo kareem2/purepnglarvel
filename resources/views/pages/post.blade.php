@@ -139,7 +139,7 @@
          <ul class="list-group">
             <li class="list-group-item"><i class="icon-info myicon-right"></i> <strong>Details</strong></li>
             <li class="list-group-item"> <span class="badge data-xs-img">{{$post->created_at->format('M d, Y')}}</span> Published on</li>
-            <li class="list-group-item"> <span class="badge data-xs-img">PNG</span> Image type</li>
+            <li class="list-group-item"> <span class="badge data-xs-img">{{$post->image_type}}</span> Image type</li>
             <li class="list-group-item"> <span class="badge data-xs-img">{{$photo_width}}x{{$photo_height}}</span> Resolution</li>
             <li class="list-group-item"> <span class="badge data-xs-img"><a href="https://purepng.com/category/clipart" title="Clipart">{{$post->category->name}}</a></span> Category</li>
             <li href="#" class="list-group-item"> <span class="badge data-xs-img">{{$photo_size}}</span> File size</li>

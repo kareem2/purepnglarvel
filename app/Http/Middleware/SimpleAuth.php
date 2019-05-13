@@ -15,10 +15,8 @@ class SimpleAuth
      */
     public function handle($request, Closure $next)
     {
-        // dd(config('app.access_token'));
-        // dd($request->access_token);
 
-        if(config('app.access_token') !== $request->access_token){
+        if(config('custom.access_token') !== $request->access_token){
             return response()->json(['message' => 'Not authorized!'], 404);
         }
         return $next($request);

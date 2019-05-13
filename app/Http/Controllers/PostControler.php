@@ -15,27 +15,19 @@ class PostControler extends Controller
     public function show($post_id){
 
 		$post = Post::find($post_id);
-		//dd($post);
-		// if($data == false)
-		// 	abort(404, 'The resource you are looking for could not be found');
-		
 
-		// $data['next_domain'] = $this->checker->next_domain($data['domain_object']);
-		// $data['prev_domain'] = $this->checker->prev_domain($data['domain_object']);	
-		$post->main_image_url = asset('uploads/large/'.$post->main_image);	
+		$post->main_image_url = asset(config('custom.images_source').$post->main_image);	
 		$post->user = $post->user()->withCount('posts')->first();
-
 		
-		//$image =  Image::make(public_path('uploads/large/'.$post->main_image));
 	    $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
 
-	    $bytes = max(filesize(public_path('uploads/large/'.$post->main_image)), 0); 
+	    $bytes = max(filesize(public_path(config('custom.images_source').$post->main_image)), 0); 
 	    $pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
 	    $pow = min($pow, count($units) - 1); 
 
 	    $bytes /= pow(1024, $pow);
 
-	    $image_resolution = getimagesize(public_path('uploads/large/'.$post->main_image));
+	    $image_resolution = getimagesize(public_path(config('custom.images_source').$post->main_image));
 
 	    $data['photo_size'] = round($bytes, 2) . ' ' . $units[$pow]; 
 	    $data['photo_width'] = $image_resolution[0];
@@ -43,12 +35,6 @@ class PostControler extends Controller
 		
 
 		$data['post'] = $post;
-		
-		//dd($post->user->posts_count);
-		//$data['user_posts_count'] = User::find('id', $post->user->id)->withCount('posts')->getFirst();
-		//dd($data['user_posts_count']);
-
-		//dd($post->user);
 
 		return View::make('pages.post', $data);	
 

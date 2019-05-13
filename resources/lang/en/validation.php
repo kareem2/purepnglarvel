@@ -128,8 +128,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'base64_image' => [
+            'is_supported_type' => 'must be one of the following supported image typs: '. implode(', ', config('custom.supported_types')),
         ],
     ],
 

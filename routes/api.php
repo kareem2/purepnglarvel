@@ -36,7 +36,7 @@ Route::middleware(['simpleAuth'])->group(function () {
 	        'user_name' => 'required_without:user_id',
 	        'image_name' => 'required',
 	        'title' => 'required',
-	        'base64_image' => 'required',
+	        'base64_image' => 'required|is_supported_type',
 	        'category_id' => 'required_without:category_name|exists:categories,id',
 	        'category_name' => 'required_without:category_id',
 	    ]);
@@ -57,6 +57,7 @@ Route::middleware(['simpleAuth'])->group(function () {
 
 		$file = finfo_open();
 		$image_type = finfo_buffer($file, $decoded_image, FILEINFO_MIME_TYPE);
+		//dd($image_type);
 		$image_type = explode('/', $image_type);
 		$image_type = $image_type[1];
 
@@ -113,7 +114,7 @@ Route::middleware(['simpleAuth'])->group(function () {
 
 				$post->tags()->sync($tags);
 
-				$thumbnail =  Image::make(public_path('uploads/large/'.$image_name));
+				$thumbnail =  Image::make(public_path(config('custom.images_source').$image_name));
 
 				$thumbnail->resize(null, 100, function ($constraint) {
 				    $constraint->aspectRatio();
