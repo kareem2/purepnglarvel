@@ -14,24 +14,33 @@ class PostControler extends Controller
 
     public function show($post_id){
 
+    	$images_folder = config('custom.images_read_path');
+    	$thumbnail_read_path = config('custom.thumbnail_read_path');
+
 		$post = Post::find($post_id);
 
-		$post->main_image_url = asset(config('custom.images_source').$post->main_image);	
+		$related_photos = $post->relatedPhotos(5);
+
+		$image_url = $images_folder.$post->main_image;
+
+		$post->main_image_url = asset($image_url);	
 		$post->user = $post->user()->withCount('posts')->first();
 		
 	    $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
 
-	    $bytes = max(filesize(public_path(config('custom.images_source').$post->main_image)), 0); 
+	    $bytes = max(filesize(public_path($image_url)), 0); 
 	    $pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
 	    $pow = min($pow, count($units) - 1); 
 
 	    $bytes /= pow(1024, $pow);
 
-	    $image_resolution = getimagesize(public_path(config('custom.images_source').$post->main_image));
+	    $image_resolution = getimagesize(public_path($image_url));
 
 	    $data['photo_size'] = round($bytes, 2) . ' ' . $units[$pow]; 
 	    $data['photo_width'] = $image_resolution[0];
 	    $data['photo_height'] = $image_resolution[1];
+	    $data['related_photos'] = $related_photos;
+	    $data['thumbnail_read_path'] = $thumbnail_read_path;
 		
 
 		$data['post'] = $post;
@@ -40,23 +49,3 @@ class PostControler extends Controller
 
     }
 }
-
-
-
-/*
-
-
-Route::get('ssl/{domain}', function($domain){
-	$url = 'https://'.$domain;
-
-	$stream = stream_context_create (array("ssl" => array("capture_peer_cert" => true)));
-	$read = @fopen($url, "rb", false, $stream);
-	if($read == false)
-		die('false');
-	$cont = stream_context_get_params($read);
-	dd($cont);
-	dd();
-});
-
-
-*/

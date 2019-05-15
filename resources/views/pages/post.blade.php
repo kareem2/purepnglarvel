@@ -29,24 +29,26 @@
          <div class="btn-block margin-bottom-20 po">
             <h3>Similar Images</h3>
             <div id="imagesFlex" class="flex-images btn-block margin-bottom-40">
-               <a href="https://purepng.com/photo/30650/heart-letter" class="item hovercard" data-w="280" data-h="185">
-                  <span class="hover-content">
-                     <h5 class="text-overflow title-hover-content" title="Heart Letter">
-                        Heart Letter
-                     </h5>
-                     <h5 class="text-overflow author-label mg-bottom-xs" title="PureNetwork">
-                        <img src="public/avatar/purenetwork-114984932140w6vdcdjkl.png" alt="User" class="img-circle" style="width: 20px; height: 20px; display: inline-block; margin-right: 5px;">
-                        <em>PureNetwork</em>
-                     </h5>
-                     <span class="timeAgo btn-block date-color text-overflow" data="clipart-pink-heart.html"></span>
-                     <span class="sub-hover">
-                     <span class="myicon-right"><i class="fa fa-line-chart myicon-right"></i> 130</span>
-                     <span class="myicon-right"><i class="icon icon-Download myicon-right"></i> 17</span>
-                     <span class="myicon-right" style="float:right"><i class="fa fa-expand myicon-right"></i> 778x512</span>
+               @foreach($related_photos as $photo)
+                  <a href="https://purepng.com/photo/30650/heart-letter" class="item hovercard">
+                     <span class="hover-content">
+                        <h5 class="text-overflow title-hover-content" title="Heart Letter">
+                           {{$photo->title}}
+                        </h5>
+                        <h5 class="text-overflow author-label mg-bottom-xs" title="{{$photo->user->name}}">
+                           <img src="public/avatar/purenetwork-114984932140w6vdcdjkl.png" alt="User" class="img-circle" style="width: 20px; height: 20px; display: inline-block; margin-right: 5px;">
+                           <em>{{$photo->user->name}}</em>
+                        </h5>
+                        <span class="timeAgo btn-block date-color text-overflow" data="clipart-pink-heart.html"></span>
+                        <span class="sub-hover">
+                        <span class="myicon-right"><i class="fa fa-line-chart myicon-right"></i> 130</span>
+                        <span class="myicon-right"><i class="icon icon-Download myicon-right"></i> 17</span>
+                        <span class="myicon-right" style="float:right"><i class="fa fa-expand myicon-right"></i> 778x512</span>
+                        </span>
                      </span>
-                  </span>
-                  <img src="public/uploads/thumbnail/heart-letter-gcq.png" alt="Heart Letter PNG" />
-               </a>
+                     <img src="{{asset($thumbnail_read_path.$photo->main_image)}}" alt="Heart Letter PNG" />
+                  </a>
+             @endforeach
             </div>
          </div>
          <div class="btn-block margin-bottom-20">
@@ -154,9 +156,10 @@
          <div class="panel panel-default">
             <div class="panel-body">
                <h5><i class="icon icon-Drop myicon-right" aria-hidden="true"></i> <strong>Color Palette</strong></h5>
-               <a title="#F16688" href="https://purepng.com/colors/F16688" aria-label="More Images with #F16688 Color" class="colorPalette showTooltip" style="background-color: #F16688;"></a>
-               <a title="#9BC4CC" href="https://purepng.com/colors/9BC4CC" aria-label="More Images with #9BC4CC Color" class="colorPalette showTooltip" style="background-color: #9BC4CC;"></a>
-               <a title="#B29CAE" href="https://purepng.com/colors/B29CAE" aria-label="More Images with #B29CAE Color" class="colorPalette showTooltip" style="background-color: #B29CAE;"></a>
+               @foreach($post->color_plattes as $color_platte)
+                  <a title="#{{$color_platte->color}}" href="https://purepng.com/colors/{{$color_platte->color}}" aria-label="More Images with #{{$color_platte->color}} Color" class="colorPalette showTooltip" style="background-color: #{{$color_platte->color}};"></a>
+               </a>
+             @endforeach
             </div>
          </div>
          <div class="panel panel-default">

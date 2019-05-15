@@ -115,6 +115,8 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
+    'is_supported_type' => 'The :attribute must be one of the following supported image typs: '. implode(', ', config('custom.supported_types')),
+
 
     /*
     |--------------------------------------------------------------------------
@@ -128,8 +130,8 @@ return [
     */
 
     'custom' => [
-        'base64_image' => [
-            'is_supported_type' => 'must be one of the following supported image typs: '. implode(', ', config('custom.supported_types')),
+        'attribute-name' => [
+            'rule-name' => 'custom-message',
         ],
     ],
 

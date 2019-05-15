@@ -51,7 +51,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
     
-$('#imagesFlex').flexImages({ maxRows: 3, truncate: true });
+$('#imagesFlex').flexImages({ maxRows: 3, truncate: false });
 
 $('#btnFormPP').click(function(e){
     $('#form_pp').submit();
@@ -144,7 +144,7 @@ $(document).on('click','.comments-likes',function() {
 
 <script type="text/javascript">
 
-     $('#imagesFlex').flexImages({ rowHeight: 220, maxRows: 8, truncate: true });
+     //$('#imagesFlex').flexImages({ rowHeight: 220, maxRows: 8, truncate: true });
 
 
     jQuery(document).ready(function( $ ) {

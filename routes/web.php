@@ -20,8 +20,3 @@ Route::get('/', function () {
 Route::get('/photo/{post_id}', 'PostControler@show')->name('photo');
 Route::get('/tag/{tag_slug}', 'TagControler@show')->name('tag');
 Route::get('/user/{user_name}', 'UserControler@show')->name('user');
-
-// Route::get('/test', function () {
-//     $posts = App\Post::all();
-//     dd($posts);
-// });

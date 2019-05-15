@@ -114,13 +114,14 @@ Route::middleware(['simpleAuth'])->group(function () {
 
 				$post->tags()->sync($tags);
 
-				$thumbnail =  Image::make(public_path(config('custom.images_source').$image_name));
+				$thumbnail =  Image::make(public_path(config('custom.images_main_path').$image_name));
 
-				$thumbnail->resize(null, 100, function ($constraint) {
+				$thumbnail->resize(null, config('custom.thumbnail_height'), function ($constraint) {
 				    $constraint->aspectRatio();
 				});
 
-				$thumbnail->save(public_path('uploads/thumbnail/'.$image_name));
+
+				$thumbnail->save(public_path(config('custom.thumbnail_main_path').$image_name));
 
 			}
 
