@@ -34,7 +34,7 @@
                      <span class="hover-content">
                         <h5 class="text-overflow title-hover-content" title="Heart Letter">
                            {{$photo->title}}
-                        </h5>
+                        </h5> 
                         <h5 class="text-overflow author-label mg-bottom-xs" title="{{$photo->user->name}}">
                            <img src="public/avatar/purenetwork-114984932140w6vdcdjkl.png" alt="User" class="img-circle" style="width: 20px; height: 20px; display: inline-block; margin-right: 5px;">
                            <em>{{$photo->user->name}}</em>

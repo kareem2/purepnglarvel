@@ -10,7 +10,7 @@ return [
 	
 	'thumbnail_main_path' => 'uploads/thumbnail/',
 	
-	'thumbnail_read_path' => 'uploads/thumbnail/',
+	'thumbnail_read_path' => 'uploads/thumbnail/', 
 
 	'thumbnail_height' => 200,
 

@@ -13,7 +13,7 @@ class PostControler extends Controller
     //
 
     public function show($post_id){
-
+ 
     	$images_folder = config('custom.images_read_path');
     	$thumbnail_read_path = config('custom.thumbnail_read_path');
 

@@ -22,7 +22,7 @@
 <script type="application/ld+json">
     {
       "@context": "http://schema.org",
-      "@type": "WebSite",
+      "@type": "WebSite", 
       "url": "https://purepng.com/",
       "potentialAction": {
         "@type": "SearchAction",
