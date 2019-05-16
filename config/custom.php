@@ -16,4 +16,16 @@ return [
 
 	'supported_types' => ['png', 'jpeg', 'jpg', 'jpeg'],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Last Domains Cache Size
+    |--------------------------------------------------------------------------
+    |
+    | This array used to define the size for each domain block
+    |
+    */    
+    'cache_size' => [
+        'tags' => 10
+    ],	
+
 ];

@@ -9,7 +9,7 @@ use App\Tag;
 use View;
 use Intervention\Image\ImageManagerStatic as Image;
 
-class PostControler extends Controller
+class HomeControler extends Controller
 {
 	public $images_folder;
 	public $thumbnail_read_path;
@@ -19,7 +19,7 @@ class PostControler extends Controller
 		$this->thumbnail_read_path = config('custom.thumbnail_read_path');
 	}
 
-    public function show($post_id){
+    public function index(){
  
 
 
@@ -60,11 +60,6 @@ class PostControler extends Controller
 
 
     	$tag = Tag::where('slug', $tag_name)->first();
-
-    	if($tag == false){
-    		abort(404, 'The resource you are looking for could not be found');
-    		die();
-    	}
     	$tag_id = $tag->id;
 
         $related_photos = Post::whereHas('tags', function ($query) use ($tag_id) {

@@ -13,10 +13,12 @@
 
 Route::get('/', function () {
     return view('pages.home');
-});
+})->name('home');
 
 
 
 Route::get('/photo/{post_id}', 'PostControler@show')->name('photo');
-Route::get('/tag/{tag_slug}', 'TagControler@show')->name('tag');
+//Route::get('/tag/{tag_slug}', 'TagControler@show')->name('tag');
 Route::get('/user/{user_name}', 'UserControler@show')->name('user');
+Route::get('/tag/{tag_name}', 'PostControler@tagPhotos')->name('tag_photos_by_name');
+Route::get('/tag/id/{tag_name}', 'PostControler@tagPhotos')->name('tag_photos_by_id');

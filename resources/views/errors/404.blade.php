@@ -1,26 +1,17 @@
 @extends('layouts.default')
 @section('title')
-<title>The resource you are looking for could not be found</title>
+<title>
+    The resource you are looking for could not be found
+</title>
 @stop
 
-@section('content')	
-<div class="row latest-results">
-<div class="col-md-12">
-	<div class="error-page">
-        <h2 class="headline text-yellow"> 404</h2>
-
-        <div class="error-content">
-          <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
-
-          <p>
-            We could not find the domain you were looking for.
-            Meanwhile, you may try search for other domains!.
-          </p>
-
-
-        </div>
-        <!-- /.error-content -->
-      </div>
-      </div>
-      </div>
+@section('content')
+<div class="col-md-12 margin-top-20 margin-bottom-20">
+    <div class="btn-block text-center">
+        <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
+    </div>
+    <h3 class="margin-top-none text-center no-result no-result-mg">
+        Sorry, we could not find any image.
+    </h3>
+</div>
 @stop

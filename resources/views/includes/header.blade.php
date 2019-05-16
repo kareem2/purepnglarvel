@@ -9,7 +9,7 @@
                 <span class="icon-bar">
                 </span>
             </button>
-            <a class="navbar-brand" href="https://purepng.com/">
+            <a class="navbar-brand" href="{{route('home')}}">
                 <div class="hidden-sm hidden-md hidden-lg">
                     <img alt="PurePNG Logo" class="logo" src="https://purepng.com/public/img/logo_p.svg">
                     </img>

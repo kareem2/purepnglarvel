@@ -95,33 +95,33 @@ $(document).on('click','.comments-likes',function() {
 
   
     //<<---- PAGINATION AJAX
-        $(document).on('click','.pagination a', function(e){
-            e.preventDefault();
-            var page = $(this).attr('href').split('page=')[1];
-            $.ajax({
-                headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-                    url: '//purepng.com/ajax/comments?photo=30610&page=' + page
+        // $(document).on('click','.pagination a', function(e){
+        //     e.preventDefault();
+        //     var page = $(this).attr('href').split('page=')[1];
+        //     $.ajax({
+        //         headers: {
+        //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //     },
+        //             url: '//purepng.com/ajax/comments?photo=30610&page=' + page
 
 
-            }).done(function(data){
-                if( data ) {
+        //     }).done(function(data){
+        //         if( data ) {
 
-                    scrollElement('#gridComments');
+        //             scrollElement('#gridComments');
 
-                    $('.gridComments').html(data);
+        //             $('.gridComments').html(data);
 
-                    jQuery(".timeAgo").timeago();
+        //             jQuery(".timeAgo").timeago();
 
-                    $('[data-toggle="tooltip"]').tooltip();
-                } else {
-                    sweetAlert("Oops...", "Error occurred", "error");
-                }
-                //<**** - Tooltip
-            });
+        //             $('[data-toggle="tooltip"]').tooltip();
+        //         } else {
+        //             sweetAlert("Oops...", "Error occurred", "error");
+        //         }
+        //         //<**** - Tooltip
+        //     });
 
-        });//<<---- PAGINATION AJAX
+        // });//<<---- PAGINATION AJAX
 </script>
 <script type="application/ld+json">
 {

@@ -21,7 +21,7 @@
          <div class="btn-block margin-bottom-20">
             <h3>Tags</h3>
              @foreach($post->tags as $tag)
-               <a href="{{route('tag', $tag->slug)}}" class="btn btn-danger tags font-default btn-sm">
+               <a href="{{route('tag_photos_by_name', $tag->slug)}}" class="btn btn-danger tags font-default btn-sm">
                {{$tag->name}}
                </a>
              @endforeach
@@ -106,12 +106,12 @@
                </ul>
             </div>
          </div>
-         <div class="panel panel-default">
+<!--          <div class="panel panel-default">
             <div class="panel-body">
                <i class="icon icon-Medal myicon-right"></i> <span class="text-muted">Featured on </span>
                <strong>Mar 01, 2019</strong>
             </div>
-         </div>
+         </div> -->
          <div class="btn-group btn-block margin-bottom-20">
             <button type="button" class="btn btn-success btn-lg btn-block dropdown-toggle" id="downloadBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-cloud-download myicon-right"></i> Free Download <span class="caret"></span>
