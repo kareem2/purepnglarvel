@@ -30,25 +30,8 @@
             <h3>Similar Images</h3>
             <div id="imagesFlex" class="flex-images btn-block margin-bottom-40">
                @foreach($related_photos as $photo)
-                  <a href="https://purepng.com/photo/30650/heart-letter" class="item hovercard">
-                     <span class="hover-content">
-                        <h5 class="text-overflow title-hover-content" title="Heart Letter">
-                           {{$photo->title}}
-                        </h5> 
-                        <h5 class="text-overflow author-label mg-bottom-xs" title="{{$photo->user->name}}">
-                           <img src="public/avatar/purenetwork-114984932140w6vdcdjkl.png" alt="User" class="img-circle" style="width: 20px; height: 20px; display: inline-block; margin-right: 5px;">
-                           <em>{{$photo->user->name}}</em>
-                        </h5> 
-                        <span class="timeAgo btn-block date-color text-overflow" data="clipart-pink-heart.html"></span>
-                        <span class="sub-hover">
-                        <span class="myicon-right"><i class="fa fa-line-chart myicon-right"></i> 130</span>
-                        <span class="myicon-right"><i class="icon icon-Download myicon-right"></i> 17</span>
-                        <span class="myicon-right" style="float:right"><i class="fa fa-expand myicon-right"></i> 778x512</span>
-                        </span>
-                     </span>
-                     <img src="{{asset($thumbnail_read_path.$photo->main_image)}}" alt="Heart Letter PNG" />
-                  </a>
-             @endforeach
+                  @include('pages.common.photo_block')
+               @endforeach
             </div>
          </div>
          <div class="btn-block margin-bottom-20">
@@ -78,12 +61,14 @@
                      </a>
                   </div>
  -->                  <div class="media-body">
-                     <a href="{{route('user', $post->user->name)}}" class="text-username font-default">
-                        <h4 class="media-heading">{{$post->user->name}}</h4>
-                     </a>
-                     <small class="media-heading text-muted btn-block margin-zero">Published on {{$post->created_at->format('M, d Y')}}</small>
-                     <small class="media-heading text-muted">{{$post->user->posts_count}} PNG Images</small>
-                     <p class="margin-top-10"></p>
+                     @if($post->user)
+                        <a href="{{route('user', $post->user->name)}}" class="text-username font-default">
+                           <h4 class="media-heading">{{$post->user->name}}</h4>
+                        </a>
+                        <small class="media-heading text-muted btn-block margin-zero">Published on {{$post->created_at->format('M, d Y')}}</small>
+                        <small class="media-heading text-muted">{{$post->user->posts_count}} PNG Images</small>
+                        <p class="margin-top-10"></p>
+                     @endif
                   </div>
                </div>
             </div>
@@ -143,7 +128,14 @@
             <li class="list-group-item"> <span class="badge data-xs-img">{{$post->created_at->format('M d, Y')}}</span> Published on</li>
             <li class="list-group-item"> <span class="badge data-xs-img">{{$post->image_type}}</span> Image type</li>
             <li class="list-group-item"> <span class="badge data-xs-img">{{$photo_width}}x{{$photo_height}}</span> Resolution</li>
-            <li class="list-group-item"> <span class="badge data-xs-img"><a href="https://purepng.com/category/clipart" title="Clipart">{{$post->category->name}}</a></span> Category</li>
+            <li class="list-group-item"> 
+               <span class="badge data-xs-img">
+                  @if($photo->category)
+                     <a href="https://purepng.com/category/clipart" title="Clipart">{{$post->category->name}}</a>
+                  @endif
+               </span> 
+               Category
+            </li>
             <li href="#" class="list-group-item"> <span class="badge data-xs-img">{{$photo_size}}</span> File size</li>
          </ul>
          <div class="panel panel-default">

@@ -6,21 +6,18 @@
 <meta content="Check if  is live and follow the troubleshooting instructions to reach the website." name="description">
     @stop
 @section('content')
-    <div class="jumbotron md index-header jumbotron_set jumbotron-cover" style="background: url('http://purepng.com/public/uploads/medium/indian-wedding-girl-pca.png') center center no-repeat #d1d1d1 !important;">
+    <div class="jumbotron md index-header jumbotron_set jumbotron-cover">
         <div class="container wrap-jumbotron position-relative">
             <h1 class="title-site title-sm">
-                Free transparent {{$tag->name}} PNG Images Download
+                {{$category->name}}
             </h1>
             <p class="subtitle-site">
-                You can download
                 <strong>
-                    238 free {{$tag->name}} PNG images
+                    ({{$count}}) images available in this category
                 </strong>
-                with transparent backgrounds from the largest collection on PurePNG. With these {{$tag->name}} PNG images, you can directly use them in your design project without cutout.
             </p>
         </div>
     </div>
-
     <div class="container margin-bottom-40">
         <div class="col-md-12 margin-top-20 margin-bottom-20">
             <div class="flex-images btn-block margin-bottom-40 dataResult" id="imagesFlex">

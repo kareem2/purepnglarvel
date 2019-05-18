@@ -11,11 +11,12 @@
             </button>
             <a class="navbar-brand" href="{{route('home')}}">
                 <div class="hidden-sm hidden-md hidden-lg">
-                    <img alt="PurePNG Logo" class="logo" src="https://purepng.com/public/img/logo_p.svg">
+
+                    <img alt="PurePNG Logo" class="logo" src="{{asset('img/logo.svg')}}">
                     </img>
                 </div>
                 <div class="hidden-xs">
-                    <img alt="PurePNG Logo" class="logo" src="https://purepng.com/public/img/logo.svg">
+                    <img alt="PurePNG Logo" class="logo" src="{{asset('img/logo.svg')}}">
                     </img>
                 </div>
             </a>
@@ -44,7 +45,7 @@
                     </a>
                     <ul aria-labelledby="dropdownMenu2" class="dropdown-menu arrow-up" role="menu">
                         <li>
-                            <a href="https://purepng.com/latest">
+                            <a href="{{route('latest_photos')}}">
                                 Latest
                             </a>
                         </li>
@@ -90,53 +91,15 @@
                         </i>
                     </a>
                     <ul aria-labelledby="dropdownMenu2" class="dropdown-menu arrow-up nav-session" role="menu">
+                        @foreach($menue_categories as $category)
+                            <li>
+                                <a class="text-overflow" href="{{route('show_category', [$category->slug])}}">
+                                    {{$category->name}}
+                                </a>
+                            </li>
+                        @endforeach
                         <li>
-                            <a class="text-overflow" href="https://purepng.com/category/animals">
-                                Animals
-                            </a>
-                        </li>
-                        <li>
-                            <a class="text-overflow" href="https://purepng.com/category/architecture">
-                                Architecture
-                            </a>
-                        </li>
-                        <li>
-                            <a class="text-overflow" href="https://purepng.com/category/business">
-                                Business
-                            </a>
-                        </li>
-                        <li>
-                            <a class="text-overflow" href="https://purepng.com/category/celebrities">
-                                Celebrities
-                            </a>
-                        </li>
-                        <li>
-                            <a class="text-overflow" href="https://purepng.com/category/clipart">
-                                Clipart
-                            </a>
-                        </li>
-                        <li>
-                            <a class="text-overflow" href="https://purepng.com/category/clothing">
-                                Clothing
-                            </a>
-                        </li>
-                        <li>
-                            <a class="text-overflow" href="https://purepng.com/category/effects">
-                                Effects
-                            </a>
-                        </li>
-                        <li>
-                            <a class="text-overflow" href="https://purepng.com/category/electronics">
-                                Electronics
-                            </a>
-                        </li>
-                        <li>
-                            <a class="text-overflow" href="https://purepng.com/category/fashion">
-                                Fashion
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://purepng.com/categories">
+                            <a href="{{route('categories')}}">
                                 <strong>
                                     View all
                                     <i class="fa fa-long-arrow-right">

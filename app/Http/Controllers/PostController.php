@@ -9,19 +9,18 @@ use App\Tag;
 use View;
 use Intervention\Image\ImageManagerStatic as Image;
 
-class PostControler extends Controller
+class PostController extends Controller
 {
 	public $images_folder;
 	public $thumbnail_read_path;
 
 	public function __construct(){
+		parent::__construct();
 		$this->images_folder = config('custom.images_read_path');
 		$this->thumbnail_read_path = config('custom.thumbnail_read_path');
 	}
 
     public function show($post_id){
- 
-
 
 		$post = Post::find($post_id);
 
@@ -74,9 +73,19 @@ class PostControler extends Controller
         $related_photos = $related_photos->paginate(10);
 
 		$data['photos'] = $related_photos;
+		$data['tag'] = $tag;
 		$data['thumbnail_read_path'] = $this->thumbnail_read_path;
 
 		return View::make('pages.tag_photos', $data);	
 
+    }
+
+    public function latest(){
+    	$photos = Post::orderBy('created_at', 'desc')->paginate(20);
+
+		$data['photos'] = $photos;
+		$data['thumbnail_read_path'] = $this->thumbnail_read_path;
+
+    	return View::make('pages.latest_photos', $data);	
     }
 }

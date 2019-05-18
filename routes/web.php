@@ -11,14 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.home');
-})->name('home');
 
 
 
-Route::get('/photo/{post_id}', 'PostControler@show')->name('photo');
-//Route::get('/tag/{tag_slug}', 'TagControler@show')->name('tag');
-Route::get('/user/{user_name}', 'UserControler@show')->name('user');
-Route::get('/tag/{tag_name}', 'PostControler@tagPhotos')->name('tag_photos_by_name');
-Route::get('/tag/id/{tag_name}', 'PostControler@tagPhotos')->name('tag_photos_by_id');
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/photo/{post_id}', 'PostController@show')->name('photo');
+Route::get('/photo/{post_id}/{title}', 'PostController@show')->name('photo_with_title');
+Route::get('/user/{user_name}', 'UserController@show')->name('user');
+Route::get('/tag/{tag_name}', 'PostController@tagPhotos')->name('tag_photos_by_name');
+Route::get('/tag/id/{tag_name}', 'PostController@tagPhotos')->name('tag_photos_by_id');
+Route::get('/latest', 'PostController@latest')->name('latest_photos');
+Route::get('/categories', 'CategoryController@index')->name('categories');
+Route::get('/category/{category_name}', 'CategoryController@show')->name('show_category');
