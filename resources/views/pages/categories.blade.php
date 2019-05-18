@@ -27,7 +27,7 @@
 		                <img style="width: auto;margin: 0 auto;max-height: 85%;" alt="{{$category->name}}" class="img-responsive btn-block custom-rounded" src="{{$thumbnail_read_path}}{{$category->samplePost()->main_image}}">
 		                </img>
 		            
-		            <h1 class="title-services">
+		            <h1 class="title-services" style="font-size: 14px;">
 		                    {{$category->name}} (978)
 		            </h1>		            
 	            </div>
