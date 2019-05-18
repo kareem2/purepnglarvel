@@ -51,7 +51,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
     
-$('#imagesFlex').flexImages({ maxRows: 3, truncate: false });
+$('#imagesFlex').flexImages();
 
 $('#btnFormPP').click(function(e){
     $('#form_pp').submit();

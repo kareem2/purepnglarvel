@@ -70,7 +70,8 @@ class PostController extends Controller
             $query->where('tags.id', $tag_id);
         })->with('user');
 
-        $tag_photos = $tag_photos->paginate(10);
+        //dd(config('custom.paging.tag_photos'));
+        $tag_photos = $tag_photos->paginate(config('custom.paging.tag_photos'));
 
 		$data['photos'] = $tag_photos;
 		$data['tag'] = $tag;
@@ -81,7 +82,7 @@ class PostController extends Controller
     }
 
     public function latest(){
-    	$photos = Post::orderBy('created_at', 'desc')->paginate(20);
+    	$photos = Post::orderBy('created_at', 'desc')->paginate(config('custom.paging.latest'));
 
 		$data['photos'] = $photos;
 		$data['thumbnail_read_path'] = $this->thumbnail_read_path;

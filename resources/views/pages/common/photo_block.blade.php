@@ -1,4 +1,4 @@
-<a href="{{route('photo_with_title', [$photo->id, $photo->title])}}" class="item hovercard">
+<a href="{{route('photo_with_title', [$photo->id, $photo->title])}}" class="item hovercard" data-w="{{$photo->image_width}}" data-h="{{$photo->image_height}}">
    <span class="hover-content">
       <h5 class="text-overflow title-hover-content" title="Heart Letter">
          {{$photo->title}}

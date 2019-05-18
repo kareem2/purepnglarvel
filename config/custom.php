@@ -39,5 +39,7 @@ return [
         'category_photos' => 5,
         'photo_related' => 10,
         'tags_index' => 100,
+        'tag_photos' => 20,
+        'latest' => 15,
     ],
 ];
