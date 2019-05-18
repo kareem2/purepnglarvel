@@ -62,7 +62,7 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-<link href="{{ URL::asset('plugins/iCheck/all.css') }}" rel="stylesheet" type="text/css" />
+<!-- <link href="{{ URL::asset('plugins/iCheck/all.css') }}" rel="stylesheet" type="text/css" /> -->
 <meta property="og:site_name" content="PurePNG | Free transparent CC0 PNG Image Library" />
 <meta property="og:url" content="http://purepng.com/photo/30610/pink-heart" />
 <meta property="og:image" content="https://purepng.com/public/uploads/thumbnail/pink-heart-aor.png" />
