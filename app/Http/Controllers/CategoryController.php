@@ -17,7 +17,7 @@ class CategoryController extends Controller
 
 	public function index(){
 
-		$categories = Category::paginate(100);
+		$categories = Category::paginate(config('custom.paging.categories_index'));
 		
 		$data['categories'] = $categories;
 		return View::make('pages.categories', $data);
@@ -33,7 +33,7 @@ class CategoryController extends Controller
         $related_photos = Post::where('category_id', $category_id)->with('user');
         $count = Post::where('category_id', $category_id)->count();
 
-        $related_photos = $related_photos->paginate(10);	
+        $related_photos = $related_photos->paginate(config('custom.paging.category_photos'));	
 
 		$data['category'] = $category;
 		$data['count'] = $count;

@@ -33,4 +33,10 @@ return [
         'medium' => 50,
         'small' => 70,
     ],
+
+    'paging' => [
+        'categories_index' => 5,
+        'category_photos' => 5,
+        
+    ],
 ];

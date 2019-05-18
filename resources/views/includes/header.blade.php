@@ -46,38 +46,41 @@
                     <ul aria-labelledby="dropdownMenu2" class="dropdown-menu arrow-up" role="menu">
                         <li>
                             <a href="{{route('latest_photos')}}">
+                                <i class="fa fa-calendar"></i> 
                                 Latest
                             </a>
                         </li>
                         <li>
                             <a href="https://purepng.com/popular">
+                                <i class="fa fa-fire"></i> 
                                 Popular
                             </a>
                         </li>
                         <li>
                             <a href="https://purepng.com/featured">
+                                <i class="fa fa-thumbs-up"></i> 
                                 Featured
                             </a>
                         </li>
                         <li class="divider" role="separator">
                         </li>
-                        <li>
+                  <!--       <li>
                             <a href="https://purepng.com/members">
                                 <i class="icon icon-Users myicon-right">
                                 </i>
                                 Members
                             </a>
-                        </li>
-                        <li>
+                        </li> -->
+                   <!--      <li>
                             <a href="https://purepng.com/collections">
                                 <i class="fa fa-folder-open-o myicon-right">
                                 </i>
                                 Collections
                             </a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="https://purepng.com/tags">
-                                <i class="icon icon-Tag myicon-right">
+                                <i class="fa fa-tags">
                                 </i>
                                 Tags
                             </a>
@@ -109,7 +112,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
+        <!--         <li class="dropdown">
                     <a class="font-default text-uppercase" data-toggle="dropdown" href="javascript:void(0);">
                         Forum
                         <i class="fa fa-angle-down">
@@ -159,7 +162,7 @@
                     <a class="font-default text-uppercase " href="https://purepng.com/login">
                         Login
                     </a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>
