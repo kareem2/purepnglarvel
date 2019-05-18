@@ -20,18 +20,18 @@
 	<div class="container margin-bottom-40">
 	    <div class="col-md-12 margin-top-20 margin-bottom-20">
 	    	@foreach($categories as $category)
-	        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 row-margin-20 margin-bottom-20">
-	        	<div style="height: 300px;">
-		            <a href="{{route('show_category', $category->slug)}}">
-		                <img style="width: auto;margin: 0 auto;" alt="{{$category->name}}" class="img-responsive btn-block custom-rounded" src="{{$thumbnail_read_path}}{{$category->samplePost()->main_image}}">
+	        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 row-margin-20 margin-bottom-20 title-services">
+	        	<a href="{{route('show_category', $category->slug)}}">
+	        	<div style="height: 300px;border:1px solid #efefef;">
+		            
+		                <img style="width: auto;margin: 0 auto;max-height: 85%;" alt="{{$category->name}}" class="img-responsive btn-block custom-rounded" src="{{$thumbnail_read_path}}{{$category->samplePost()->main_image}}">
 		                </img>
-		            </a>
+		            
 		            <h1 class="title-services">
-		                <a href="{{route('show_category', $category->slug)}}">
 		                    {{$category->name}} (978)
-		                </a>
 		            </h1>		            
 	            </div>
+	            </a>
 	        </div>
 	        @endforeach
 	    </div>
