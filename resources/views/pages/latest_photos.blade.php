@@ -1,8 +1,8 @@
 @extends('layouts.default')
 @section('title')
 <title>Free transparent Car PNG images Download |  PurePNG | Free transparent CC0 PNG Image Library</title>
-<meta content="Check if  is live and follow the troubleshooting instructions to reach the website." name="description">
-    @stop
+@stop
+
 @section('content')
     <div class="container margin-bottom-40">
         <div class="col-md-12 margin-top-20 margin-bottom-20">
@@ -20,5 +20,4 @@
             </div>
         </div>
     </div>
-    @stop
-</meta>
+@stop

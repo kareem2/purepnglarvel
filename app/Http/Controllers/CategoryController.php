@@ -15,11 +15,19 @@ class CategoryController extends Controller
 		parent::__construct();
 	}
 
+	public function index(){
+
+		$categories = Category::paginate(100);
+		
+		$data['categories'] = $categories;
+		return View::make('pages.categories', $data);
+
+	}
+
     public function show($Category_name){
 
 		$category = Category::where('slug', $Category_name)->first();
-		//dd($category);
-		//dd()
+
 		$category_id = $category->id;
 
         $related_photos = Post::where('category_id', $category_id)->with('user');

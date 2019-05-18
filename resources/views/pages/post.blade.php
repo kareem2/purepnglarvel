@@ -102,9 +102,21 @@
             <i class="fa fa-cloud-download myicon-right"></i> Free Download <span class="caret"></span>
             </button>
             <ul class="dropdown-menu arrowDownload dd-close btn-block">
-               <li><a href="https://purepng.com/download/gm4EBCTT3uVC7lhLgITu15MVSgxgSnkhpDd8Ex03QLHiTL2dxZbTzU2ukZujjRDWIMMNFHN8b0rFEUVPuo8uDnBkd7WSrWm948iaaS6yYME9BU9Z1ab3xKtQEeWUYQQVyMYo3th2E5AFj1K0ZK9teAzQLuidmiP2IlIblLvfuta2cfAMEXVyXKcN702ClaV8508Ozv2h/small"><span class="label label-default myicon-right">S</span> 640x577 <span class="pull-right">162.3kB</span></a></li>
-               <li><a href="https://purepng.com/download/gm4EBCTT3uVC7lhLgITu15MVSgxgSnkhpDd8Ex03QLHiTL2dxZbTzU2ukZujjRDWIMMNFHN8b0rFEUVPuo8uDnBkd7WSrWm948iaaS6yYME9BU9Z1ab3xKtQEeWUYQQVyMYo3th2E5AFj1K0ZK9teAzQLuidmiP2IlIblLvfuta2cfAMEXVyXKcN702ClaV8508Ozv2h/medium"><span class="label label-default myicon-right">M</span> 901x812 <span class="pull-right">384.2kB</span></a></li>
-               <li><a href="https://purepng.com/download/gm4EBCTT3uVC7lhLgITu15MVSgxgSnkhpDd8Ex03QLHiTL2dxZbTzU2ukZujjRDWIMMNFHN8b0rFEUVPuo8uDnBkd7WSrWm948iaaS6yYME9BU9Z1ab3xKtQEeWUYQQVyMYo3th2E5AFj1K0ZK9teAzQLuidmiP2IlIblLvfuta2cfAMEXVyXKcN702ClaV8508Ozv2h/large"><span class="label label-default myicon-right">L</span> 568x512 <span class="pull-right">16.9kB</span></a></li>
+               <li>
+                  <a href="{{route('photo_download', [$post->id, $post->title, 'small'])}}">
+                     <span class="label label-default myicon-right">S</span>Small <span class="pull-right">.</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="{{route('photo_download', [$post->id, $post->title, 'medium'])}}">
+                     <span class="label label-default myicon-right">M</span>Medium <span class="pull-right">.</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="{{route('photo_download', [$post->id, $post->title, 'large'])}}">
+                     <span class="label label-default myicon-right">L</span>Large <span class="pull-right">.</span>
+                  </a>
+               </li>
             </ul>
          </div>
          <div class="btn-group btn-block margin-bottom-20 btn-block text-center">

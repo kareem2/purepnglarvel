@@ -28,4 +28,9 @@ return [
         'tags' => 10
     ],	
 
+    'height_resize_factor' => [
+        'large' => 0,
+        'medium' => 50,
+        'small' => 70,
+    ],
 ];

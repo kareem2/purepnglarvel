@@ -88,4 +88,37 @@ class PostController extends Controller
 
     	return View::make('pages.latest_photos', $data);	
     }
+
+    public function download($photo_id, $title, $size){
+    	$photo = Post::find($photo_id);
+
+		$image =  Image::make(public_path(config('custom.images_main_path').$photo->main_image));
+
+
+		$resize_factor = config('custom.height_resize_factor')[$size];
+
+		if($resize_factor != 0){
+			$new_hight = $image->height() - ($image->height() * $resize_factor / 100);
+
+			$image->resize(null, $new_hight, function ($constraint) {
+			    $constraint->aspectRatio();
+			});			
+		}
+
+
+		$width = $image->width();
+		$height = $image->height();
+		$name = $image->filename;
+		$extension = $image->extension;
+
+		$filename = "{$name}-{$width}x{$height}.$extension";
+
+		$image->encode($image->extension);
+		
+
+		header('Content-Disposition: attachment;filename="'.$filename.'"');
+		header('Content-Type: application/force-download');  
+		echo ($image->encoded);   	
+
+    }
 }

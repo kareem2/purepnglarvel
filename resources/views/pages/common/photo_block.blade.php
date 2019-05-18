@@ -13,8 +13,8 @@
       <span class="sub-hover">
       <span class="myicon-right"><i class="fa fa-line-chart myicon-right"></i> 130</span>
       <span class="myicon-right"><i class="icon icon-Download myicon-right"></i> 17</span>
-      <span class="myicon-right" style="float:right"><i class="fa fa-expand myicon-right"></i> 778x512</span>
+      <span class="myicon-right" style="float:right"><i class="fa fa-expand myicon-right"></i> {{$photo->image_width}}x{{$photo->image_height}}</span>
       </span>
    </span>
-   <img src="{{asset($thumbnail_read_path.$photo->main_image)}}" alt="Heart Letter PNG" />
+   <img src="{{asset($thumbnail_read_path.$photo->main_image)}}" alt="{{$photo->title}}" />
 </a>
