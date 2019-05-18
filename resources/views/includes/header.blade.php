@@ -79,7 +79,7 @@
                             </a>
                         </li> -->
                         <li>
-                            <a href="https://purepng.com/tags">
+                            <a href="{{route('tags')}}">
                                 <i class="fa fa-tags">
                                 </i>
                                 Tags

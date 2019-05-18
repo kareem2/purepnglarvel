@@ -14,7 +14,7 @@
             <p class="subtitle-site">
                 You can download
                 <strong>
-                    238 free {{$tag->name}} PNG images
+                    {{$tag->post_tags_count}} free {{$tag->name}} PNG images
                 </strong>
                 with transparent backgrounds from the largest collection on PurePNG. With these {{$tag->name}} PNG images, you can directly use them in your design project without cutout.
             </p>

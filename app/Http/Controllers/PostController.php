@@ -24,7 +24,7 @@ class PostController extends Controller
 
 		$post = Post::find($post_id);
 
-		$related_photos = $post->relatedPhotos(5);
+		$related_photos = $post->relatedPhotos(config('custom.paging.photo_related'));
 
 		$image_url = $this->images_folder.$post->main_image;
 
@@ -58,7 +58,7 @@ class PostController extends Controller
     public function tagPhotos(Request $request, $tag_name){
 
 
-    	$tag = Tag::where('slug', $tag_name)->first();
+    	$tag = Tag::withCount('post_tags')->where('slug', $tag_name)->first();
 
     	if($tag == false){
     		abort(404, 'The resource you are looking for could not be found');
@@ -66,13 +66,13 @@ class PostController extends Controller
     	}
     	$tag_id = $tag->id;
 
-        $related_photos = Post::whereHas('tags', function ($query) use ($tag_id) {
+        $tag_photos = Post::whereHas('tags', function ($query) use ($tag_id) {
             $query->where('tags.id', $tag_id);
         })->with('user');
 
-        $related_photos = $related_photos->paginate(10);
+        $tag_photos = $tag_photos->paginate(10);
 
-		$data['photos'] = $related_photos;
+		$data['photos'] = $tag_photos;
 		$data['tag'] = $tag;
 		$data['thumbnail_read_path'] = $this->thumbnail_read_path;
 

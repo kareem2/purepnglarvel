@@ -37,6 +37,7 @@ return [
     'paging' => [
         'categories_index' => 5,
         'category_photos' => 5,
-        
+        'photo_related' => 10,
+        'tags_index' => 100,
     ],
 ];

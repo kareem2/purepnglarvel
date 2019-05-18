@@ -23,12 +23,12 @@
 	        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 row-margin-20 margin-bottom-20 title-services">
 	        	<a href="{{route('show_category', $category->slug)}}">
 	        	<div style="height: 300px;border:1px solid #efefef;">
-		            
+
 		                <img style="width: auto;margin: 0 auto;max-height: 85%;" alt="{{$category->name}}" class="img-responsive btn-block custom-rounded" src="{{$thumbnail_read_path}}{{$category->samplePost()->main_image}}">
 		                </img>
 		            
 		            <h1 class="title-services" style="font-size: 14px;">
-		                    {{$category->name}} ({{$category->postsCount()}})
+		                    {{$category->name}} ({{$category->posts_count}})
 		            </h1>		            
 	            </div>
 	            </a>

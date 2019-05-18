@@ -17,10 +17,20 @@ class CategoryController extends Controller
 
 	public function index(){
 
-		$categories = Category::paginate(config('custom.paging.categories_index'));
-		
+		$categories = Category::withCount('posts')
+		->paginate(config('custom.paging.categories_index'));
+
+		// $categories->load(['posts' => function ($query) {
+		//     $query->whereNotNull('main_image')->limit(1);
+		// }]);
+
+		// dd([$categories[1], $categories[1]]);
+		//dd($categories[1]->posts->first()->main_image);
+
+
 		$data['categories'] = $categories;
 		return View::make('pages.categories', $data);
+	
 
 	}
 
