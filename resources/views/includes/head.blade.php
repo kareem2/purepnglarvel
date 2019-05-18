@@ -10,19 +10,19 @@
 
 <link href="{{ URL::asset('css/main.css') }}" rel="stylesheet">
 
-<link href="{{ URL::asset('css/font-awesome.min.css') }}" rel="stylesheet">
+<!-- <link href="{{ URL::asset('css/font-awesome.min.css') }}" rel="stylesheet"> -->
 
-<link href="{{ URL::asset('css/icomoon.css') }}" rel="stylesheet">
+<!-- <link href="{{ URL::asset('css/icomoon.css') }}" rel="stylesheet"> -->
 
-<link href="{{ URL::asset('css/strokeicons.css') }}" rel="stylesheet">
+<!-- <link href="{{ URL::asset('css/strokeicons.css') }}" rel="stylesheet"> -->
 
 <link href="{{ URL::asset('plugins/fleximages/jquery.flex-images.css') }}" rel="stylesheet">
 
 <!-- <link href="{{ URL::asset('fonts/ionicons/css/ionicons.min.css') }}" rel="stylesheet" type="text/css" /> -->
 
-<link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css' />
+<!-- <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css' /> -->
 
-<link href="{{ URL::asset('plugins/sweetalert/sweetalert.css') }}" rel="stylesheet" type="text/css" />
+<!-- <link href="{{ URL::asset('plugins/sweetalert/sweetalert.css') }}" rel="stylesheet" type="text/css" /> -->
 
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v4.6.3/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> -->
 
