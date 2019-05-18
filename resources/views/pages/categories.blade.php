@@ -28,7 +28,7 @@
 		                </img>
 		            
 		            <h1 class="title-services" style="font-size: 14px;">
-		                    {{$category->name}} (978)
+		                    {{$category->name}} ({{$category->postsCount()}})
 		            </h1>		            
 	            </div>
 	            </a>
