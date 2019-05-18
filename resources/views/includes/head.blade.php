@@ -18,7 +18,7 @@
 
 <link href="{{ URL::asset('plugins/fleximages/jquery.flex-images.css') }}" rel="stylesheet">
 
-<link href="{{ URL::asset('fonts/ionicons/css/ionicons.min.css') }}" rel="stylesheet" type="text/css" />
+<!-- <link href="{{ URL::asset('fonts/ionicons/css/ionicons.min.css') }}" rel="stylesheet" type="text/css" /> -->
 
 <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css' />
 
