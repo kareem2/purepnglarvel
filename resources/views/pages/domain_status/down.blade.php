@@ -1,2 +1,0 @@
-We tried to reach {{$prefixed_domain_name}}, but encountered an error while managing the connection. We received an error {{$domain->last_check->response_code}} so we recorded the status of {{$prefixed_domain_name}} as down. We'll be able to recheck the availability of this website in some time later. If you'd like to recheck the website status please press "Check Again" button. Website availability checking is restricted by time, so each new attempt can be made once in several minutes. 
-

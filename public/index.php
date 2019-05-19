@@ -1,5 +1,5 @@
 <?php
-
+header("Cache-Control: max-age=2592000");
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
