@@ -8,43 +8,4 @@
 <meta name="theme-color" content="#ff0000">
 @yield('title')
 <link href="{{ URL::asset('bootstrap/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
-
 <link href="{{ URL::asset('css/main.css') }}" rel="stylesheet">
-
-<!-- <link href="{{ URL::asset('css/font-awesome.min.css') }}" rel="stylesheet"> -->
-
-<!-- <link href="{{ URL::asset('css/icomoon.css') }}" rel="stylesheet"> -->
-
-<!-- <link href="{{ URL::asset('css/strokeicons.css') }}" rel="stylesheet"> -->
-
-<link href="{{ URL::asset('plugins/fleximages/jquery.flex-images.css') }}" rel="stylesheet">
-
-<!-- <link href="{{ URL::asset('fonts/ionicons/css/ionicons.min.css') }}" rel="stylesheet" type="text/css" /> -->
-
-<!-- <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css' /> -->
-
-<!-- <link href="{{ URL::asset('plugins/sweetalert/sweetalert.css') }}" rel="stylesheet" type="text/css" /> -->
-
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v4.6.3/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> -->
-
-<script src="https://use.fontawesome.com/f9960519af.js"></script>
-
-
-
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-<!--[if IE]>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-<![endif]-->
-
-
-<link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
-
-
-<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-<!-- <link href="{{ URL::asset('plugins/iCheck/all.css') }}" rel="stylesheet" type="text/css" /> -->

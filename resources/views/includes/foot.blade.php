@@ -19,6 +19,11 @@
 <script src="{{ URL::asset('/js/ie-emulation-modes-warning.js') }}"></script>
 
 <script src="{{ URL::asset('/js/ie10-viewport-bug-workaround.js') }}"></script>
+<script src="https://use.fontawesome.com/f9960519af.js"></script>
+
+<link href="{{ URL::asset('plugins/fleximages/jquery.flex-images.css') }}" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+
 <script type="application/ld+json">
     {
       "@context": "http://schema.org",
