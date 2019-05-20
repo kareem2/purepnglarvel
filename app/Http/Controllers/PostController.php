@@ -82,7 +82,8 @@ class PostController extends Controller
     }
 
     public function latest(){
-    	$photos = Post::orderBy('created_at', 'desc')->paginate(config('custom.paging.latest'));
+    	$photos = Post::with('user')->orderBy('created_at', 'desc')->paginate(config('custom.paging.latest'));
+    	//dd($photos);
 
 		$data['photos'] = $photos;
 		$data['thumbnail_read_path'] = $this->thumbnail_read_path;

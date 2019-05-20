@@ -8,4 +8,8 @@
 <meta name="theme-color" content="#ff0000">
 @yield('title')
 <link href="{{ URL::asset('bootstrap/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+
 <link href="{{ URL::asset('css/main.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('plugins/fleximages/jquery.flex-images.css') }}" rel="stylesheet">
+<script src="https://use.fontawesome.com/f9960519af.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
