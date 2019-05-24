@@ -89,38 +89,15 @@
                     Categories
                 </h4>
                 <ul class="list-unstyled">
+                    @foreach($footer_categories as $category)
+                        <li>
+                            <a class="link-footer" href="{{route('show_category', [$category->slug])}}">
+                                {{$category->name}}
+                            </a>
+                        </li>
+                    @endforeach
                     <li>
-                        <a class="link-footer" href="https://purepng.com/category/animals">
-                            Animals
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-footer" href="https://purepng.com/category/architecture">
-                            Architecture
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-footer" href="https://purepng.com/category/business">
-                            Business
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-footer" href="https://purepng.com/category/celebrities">
-                            Celebrities
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-footer" href="https://purepng.com/category/clipart">
-                            Clipart
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-footer" href="https://purepng.com/category/clothing">
-                            Clothing
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-footer" href="https://purepng.com/categories">
+                        <a class="link-footer" href="{{route('categories')}}">
                             <strong>
                                 View all
                                 <i class="fa fa-long-arrow-right">
@@ -134,7 +111,7 @@
                 <h4 class="margin-top-zero font-default">
                     Links
                 </h4>
-                <ul class="list-unstyled">
+       <!--          <ul class="list-unstyled">
                     <li>
                         <a class="link-footer" href="https://purepng.com/login">
                             Login
@@ -145,7 +122,7 @@
                             Sign Up
                         </a>
                     </li>
-                </ul>
+                </ul> -->
             </div>
         </div>
     </div>

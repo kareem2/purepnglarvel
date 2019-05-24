@@ -76,18 +76,11 @@ $('input').iCheck({
 </script>    
 
 <script type="text/javascript">
-
-   //$('#imagesFlex').flexImages({ rowHeight: 220, maxRows: 8, truncate: true });
-
-
   jQuery(document).ready(function( $ ) {
     $('.counter').counterUp({
     delay: 10, // the delay time in ms
     time: 1000 // the speed time in ms
     });
   });
-
-   
-     
   </script>
 This page took <strong>{{ (microtime(true) - LARAVEL_START) }} </strong> seconds to render  

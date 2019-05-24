@@ -1084,82 +1084,58 @@
             </div>
             <div class="col-md-3 col-center">
                 <ul class="list-unstyled imagesCategory">
-                    <li>
-                        <a class="link-category" href="https://purepng.com/category/animals">
-                            Animals (978)
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-category" href="https://purepng.com/category/architecture">
-                            Architecture (305)
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-category" href="https://purepng.com/category/business">
-                            Business (91)
-                        </a>
-                    </li>
+                    @foreach($main_page_categories as $category)
+                        @if($loop->index < 3)
+                            <li>
+                                <a class="link-category" href="{{route('show_category', [$category->slug])}}">
+                                   {{$category->name}} ({{$category->posts_count}})
+                                </a>
+                            </li>
+                        @endif
+                    @endforeach                    
                 </ul>
             </div>
             <div class="col-md-3 col-center">
                 <ul class="list-unstyled imagesCategory">
-                    <li>
-                        <a class="link-category" href="https://purepng.com/category/celebrities">
-                            Celebrities (1013)
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-category" href="https://purepng.com/category/clipart">
-                            Clipart (5744)
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-category" href="https://purepng.com/category/clothing">
-                            Clothing (969)
-                        </a>
-                    </li>
+                    @foreach($main_page_categories as $category)
+                        @if($loop->index >= 3 && $loop->index <= 5)
+                            <li>
+                                <a class="link-category" href="{{route('show_category', [$category->slug])}}">
+                                    {{$category->name}} ({{$category->posts_count}})
+                                </a>
+                            </li>
+                        @endif
+                    @endforeach  
                 </ul>
             </div>
             <div class="col-md-3 col-center">
                 <ul class="list-unstyled imagesCategory">
-                    <li>
-                        <a class="link-category" href="https://purepng.com/category/effects">
-                            Effects (307)
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-category" href="https://purepng.com/category/electronics">
-                            Electronics (1039)
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-category" href="https://purepng.com/category/fashion">
-                            Fashion (44)
-                        </a>
-                    </li>
+                    @foreach($main_page_categories as $category)
+                        @if($loop->index >= 6 && $loop->index <= 8)
+                            <li>
+                                <a class="link-category" href="{{route('show_category', [$category->slug])}}">
+                                    {{$category->name}} ({{$category->posts_count}})
+                                </a>
+                            </li>
+                        @endif
+                    @endforeach  
                 </ul>
             </div>
             <div class="col-md-3 col-center">
                 <ul class="list-unstyled imagesCategory">
-                    <li>
-                        <a class="link-category" href="https://purepng.com/category/female">
-                            Female (317)
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-category" href="https://purepng.com/category/food">
-                            Food (4308)
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-category" href="https://purepng.com/category/games">
-                            Games (760)
-                        </a>
-                    </li>
+                    @foreach($main_page_categories as $category)
+                        @if($loop->index >= 9)
+                            <li>
+                                <a class="link-category" href="{{route('show_category', [$category->slug])}}">
+                                   {{$category->name}} ({{$category->posts_count}})
+                                </a>
+                            </li>
+                        @endif
+                    @endforeach  
                 </ul>
-            </div>
+            </div>            
             <div class="col-md-12 text-center margin-top-40">
-                <a class="btn btn-lg btn-main custom-rounded" href="https://purepng.com/categories">
+                <a class="btn btn-lg btn-main custom-rounded" href="{{route('categories')}}">
                     View all
                     <i class="fa fa-long-arrow-right">
                     </i>

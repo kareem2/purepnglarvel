@@ -17,7 +17,10 @@ class HomeController extends Controller
 
     public function index(){
  
-    	return view('pages.home');
+ 		$latest_photos = Post::with('user')->limit(config('custom.main_page_latest_photos'))->get();
+
+ 		$data['latest_photos'] = $latest_photos;
+    	return view('pages.home', $data);
 
     }
 

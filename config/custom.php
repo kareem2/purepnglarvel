@@ -42,4 +42,15 @@ return [
         'tag_photos' => 20,
         'latest' => 15,
     ],
+
+    'categories_count' => 15,
+    
+    'menu_categories_count' => 6,
+    
+    'main_page_categories_count' => 12,
+    
+    'footer_categories_count' => 9,
+    
+    'main_page_latest_photos' => 15,
+    
 ];

@@ -94,7 +94,7 @@
                         </i>
                     </a>
                     <ul aria-labelledby="dropdownMenu2" class="dropdown-menu arrow-up nav-session" role="menu">
-                        @foreach($menue_categories as $category)
+                        @foreach($menu_categories as $category)
                             <li>
                                 <a class="text-overflow" href="{{route('show_category', [$category->slug])}}">
                                     {{$category->name}}
