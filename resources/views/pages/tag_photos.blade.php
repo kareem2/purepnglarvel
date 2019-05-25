@@ -3,8 +3,7 @@
 <title>
     Free transparent Car PNG images Download |  PurePNG | Free transparent CC0 PNG Image Library
 </title>
-<meta content="Check if  is live and follow the troubleshooting instructions to reach the website." name="description">
-    @stop
+@stop
 @section('content')
     <div class="jumbotron md index-header jumbotron_set jumbotron-cover" style="background: url('http://purepng.com/public/uploads/medium/indian-wedding-girl-pca.png') center center no-repeat #d1d1d1 !important;">
         <div class="container wrap-jumbotron position-relative">
@@ -33,5 +32,4 @@
             </div>
         </div>
     </div>
-    @stop
-</meta>
+@stop

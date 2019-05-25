@@ -26,22 +26,26 @@ class TagController extends Controller
 
 	}
 
-  //   public function show($Category_name){
+	public function search(Request $request){
+		$query = $request->q;
 
-		// $category = Category::where('slug', $Category_name)->first();
+		$tags = explode(' ', $query);
 
-		// $category_id = $category->id;
+		$tagIds = Tag::whereIn('slug', $tags);
+		$tagIds = $tagIds->pluck('tags.id')->all();
 
-  //       $related_photos = Post::where('category_id', $category_id)->with('user');
-  //       $count = Post::where('category_id', $category_id)->count();
+        $photos = Post::whereHas('tags', function ($query) use ($tagIds) {
+            $query->whereIn('tags.id', $tagIds);
+        })->with('user');
 
-  //       $related_photos = $related_photos->paginate(config('custom.paging.category_photos'));	
+        $photos = $photos->paginate(config('custom.paging.search_results'));
 
-		// $data['category'] = $category;
-		// $data['count'] = $count;
-		// $data['photos'] = $related_photos;
+        $data['photos'] = $photos->appends(request()->input());
 
-		// return View::make('pages.category_photos', $data);	
+        $data['query'] = $query;
 
-  //   }
+        return View::make('pages.search_results', $data);
+
+
+	}
 }

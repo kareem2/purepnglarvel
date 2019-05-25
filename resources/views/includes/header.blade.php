@@ -21,7 +21,7 @@
                 </div>
             </a>
             <div class="h_search">
-                <form action="https://purepng.com/search" autocomplete="off" method="get" role="search">
+                <form action="{{route('tags_search')}}" autocomplete="off" method="get" role="search">
                     <div class="input-group input-group-md">
                         <input aria-label="Find PNG images" class="form-control" name="q" placeholder="Find PNG images" type="text" value="">
                             <span class="input-group-btn">

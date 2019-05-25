@@ -41,16 +41,17 @@ return [
         'tags_index' => 100,
         'tag_photos' => 20,
         'latest' => 15,
+        'search_results' => 20,
     ],
 
     'categories_count' => 15,
-    
+
     'menu_categories_count' => 6,
-    
+
     'main_page_categories_count' => 12,
-    
-    'footer_categories_count' => 9,
-    
-    'main_page_latest_photos' => 15,
-    
+
+    'footer_categories_count' => 5,
+
+    'main_page_latest_photos' => 20,
+
 ];
