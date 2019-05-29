@@ -11,8 +11,8 @@
       @endif
       <span class="timeAgo btn-block date-color text-overflow" data="clipart-pink-heart.html"></span>
       <span class="sub-hover">
-      <span class="myicon-right"><i class="fa fa-line-chart myicon-right"></i> 130</span>
-      <span class="myicon-right"><i class="icon icon-Download myicon-right"></i> 17</span>
+      <span class="myicon-right"><i class="fa fa-line-chart myicon-right"></i> {{$photo->views_count}}</span>
+      <span class="myicon-right"><i class="fa fa-download"></i> {{$photo->downloads_count}}</span>
       <span class="myicon-right" style="float:right"><i class="fa fa-expand myicon-right"></i> {{$photo->image_width}}x{{$photo->image_height}}</span>
       </span>
    </span>

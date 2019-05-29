@@ -4,8 +4,12 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Tag;
 use App\User; 
+use App\ColorPalette; 
 use App\Category;
+use App\Comment;
 use Intervention\Image\ImageManager;
+use \BrianMcdo\ImagePalette\ImagePalette as ImagePalette;
+use Illuminate\Support\Collection;
 
 
 /*
@@ -20,9 +24,9 @@ use Intervention\Image\ImageManager;
 */
 
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 
 Route::middleware(['simpleAuth'])->group(function () {
@@ -46,7 +50,13 @@ Route::middleware(['simpleAuth'])->group(function () {
 		$post->user_id = $request->user_id;
 		$post->title = $request->title;
 		$post->description = $request->description;
-
+		if($request->views_count){
+			$post->views_count = $request->views_count;
+		}
+		if($request->downloads_count){
+			$post->downloads_count = $request->downloads_count;
+		}		
+		
 		$post->category_id = $request->category_id;
 
 
@@ -57,7 +67,6 @@ Route::middleware(['simpleAuth'])->group(function () {
 
 		$file = finfo_open();
 		$image_type = finfo_buffer($file, $decoded_image, FILEINFO_MIME_TYPE);
-		//dd($image_type);
 		$image_type = explode('/', $image_type);
 		$image_type = $image_type[1];
 
@@ -112,9 +121,39 @@ Route::middleware(['simpleAuth'])->group(function () {
 				    $tags[] = $tag->id;
 				}
 
+
+
 				$post->tags()->sync($tags);
 
-				$thumbnail =  Image::make(public_path(config('custom.images_main_path').$image_name));
+				$large_image_path = public_path(config('custom.images_main_path').$image_name);
+				
+				
+				$palette = new ImagePalette($large_image_path, 1, 5);	
+
+				$colors = $palette->colors;
+
+				$palettes_collection = new Collection();
+				foreach ($colors as $color) {
+					$palettes_collection->push(new ColorPalette(['color' => str_replace('#', '', $color)]));
+				}
+
+				$post->color_palettes()->saveMany($palettes_collection);
+				
+
+
+				if($request->comments){
+					$comments_collection = new Collection();
+
+					foreach ($request->comments as $comment) {
+						$comments_collection->push(new Comment($comment));
+					}
+
+					$post->comments()->saveMany($comments_collection);					
+				}
+
+
+
+				$thumbnail =  Image::make($large_image_path);
 
 				$thumbnail->resize(null, config('custom.thumbnail_height'), function ($constraint) {
 				    $constraint->aspectRatio();

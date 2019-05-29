@@ -66,7 +66,7 @@ return [
 
         'large_image' => [
             'driver' => 'local',
-            'root'   => public_path() . '/uploads/large',
+            'root'   => public_path() . config('custom.images_main_path'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],

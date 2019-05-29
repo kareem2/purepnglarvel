@@ -4,8 +4,64 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "796a39acf995bbf7ab4fd6f53fd87ef1",
+    "content-hash": "32ad33163177cce134ac9589a6e980d5",
     "packages": [
+        {
+            "name": "brianmcdo/image-palette",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/brianmcdo/ImagePalette.git",
+                "reference": "d48d828c33a438d8fbeed3f76534ad1db853bb9f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/brianmcdo/ImagePalette/zipball/d48d828c33a438d8fbeed3f76534ad1db853bb9f",
+                "reference": "d48d828c33a438d8fbeed3f76534ad1db853bb9f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=5.4.0"
+            },
+            "replace": {
+                "bfoxwell/image-palette": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BrianMcdo\\ImagePalette\\": "src/BrianMcdo/ImagePalette"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brian McDonald",
+                    "email": "brian@brianmcdonald.io",
+                    "homepage": "http://brianmcdonald.io",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Gandalf the Grey",
+                    "homepage": "https://github.com/gandalfx",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Extracts colors from an image and generates a color palette against a whitelist of colors.",
+            "homepage": "https://github.com/BrianMcdo/ImagePalette",
+            "keywords": [
+                "color",
+                "extractor",
+                "gd",
+                "image",
+                "laravel",
+                "palette"
+            ],
+            "time": "2015-10-25T01:38:04+00:00"
+        },
         {
             "name": "cviebrock/eloquent-taggable",
             "version": "3.5.3",
@@ -655,6 +711,59 @@
             ],
             "description": "Highlight PHP code in terminal",
             "time": "2018-09-29T18:48:56+00:00"
+        },
+        {
+            "name": "ksubileau/color-thief-php",
+            "version": "v1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ksubileau/color-thief-php.git",
+                "reference": "fc2acefacbd037f68cf61bcc62b30ac1bb16ed59"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ksubileau/color-thief-php/zipball/fc2acefacbd037f68cf61bcc62b30ac1bb16ed59",
+                "reference": "fc2acefacbd037f68cf61bcc62b30ac1bb16ed59",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.13",
+                "phpunit/phpunit": "~4.8|~5.7"
+            },
+            "suggest": {
+                "ext-gd": "to use the GD image adapter.",
+                "ext-gmagick": "to use the Gmagick image adapter.",
+                "ext-imagick": "to use the Imagick image adapter."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ColorThief\\": "lib/ColorThief"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "CC-BY-2.5"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Subileau",
+                    "homepage": "http://www.kevinsubileau.fr"
+                }
+            ],
+            "description": "Grabs the dominant color or a representative color palette from an image.",
+            "homepage": "http://www.kevinsubileau.fr/projets/color-thief-php",
+            "keywords": [
+                "color",
+                "dominant",
+                "palette",
+                "php",
+                "thief"
+            ],
+            "time": "2018-10-27T18:57:38+00:00"
         },
         {
             "name": "laravel/framework",

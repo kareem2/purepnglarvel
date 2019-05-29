@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use App\Comment;
 use App\Tag;
 use View;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -22,7 +23,17 @@ class PostController extends Controller
 
     public function show($post_id){
 
-		$post = Post::find($post_id);
+		$post = Post::with('category')->find($post_id);
+
+
+        $comments = Comment::where('post_id', $post_id)->paginate(config('custom.paging.comments'));
+
+	    if ( !\Cookie::get("{$post_id}_post_viewed") ) {
+
+	        \Cookie::queue("{$post_id}_post_viewed", true, 60 * 24 * 30);
+
+	        $post->update(['views_count' => $post->views_count + 1]);
+	    }	
 
 		$related_photos = $post->relatedPhotos(config('custom.paging.photo_related'));
 
@@ -45,8 +56,10 @@ class PostController extends Controller
 	    $data['photo_width'] = $image_resolution[0];
 	    $data['photo_height'] = $image_resolution[1];
 	    $data['related_photos'] = $related_photos;
+	    $data['comments'] = $comments;
 	    $data['thumbnail_read_path'] = $this->thumbnail_read_path;
-		
+
+	
 
 		$data['post'] = $post;
 
@@ -92,6 +105,7 @@ class PostController extends Controller
     }
 
     public function download($photo_id, $title, $size){
+    	//dd(1);
     	$photo = Post::find($photo_id);
 
 		$image =  Image::make(public_path(config('custom.images_main_path').$photo->main_image));
@@ -117,10 +131,20 @@ class PostController extends Controller
 
 		$image->encode($image->extension);
 		
+		
+	    if(!\Cookie::get("photo_{$photo_id}_downloaded")){
+			$photo->update(['downloads_count' => $photo->downloads_count + 1]);
+	    }
+	    
+	    	
 
 		header('Content-Disposition: attachment;filename="'.$filename.'"');
 		header('Content-Type: application/force-download');  
-		echo ($image->encoded);   	
+
+		return response($image->encoded)->cookie(
+			"photo_{$photo_id}_downloaded", true, 60 * 24 * 30
+		);
+
 
     }
 }

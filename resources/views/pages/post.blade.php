@@ -35,27 +35,58 @@
             </div>
          </div>
          <div class="btn-block margin-bottom-20">
-            <h3>Comments(<span id="totalComments">0</span>)</h3>
-            <div class="gridComments" id="gridComments" style="padding-top: 15px;"></div>
-            <div class="btn-block text-center noComments">
-               <i class="fa fa-comments-o fa-5x"></i>
-            </div>
-            <h3 class="margin-top-none text-center no-result row-margin-20 noComments">
-               No comments yet
-            </h3>
+
+         <h3>Comments(<span id="totalComments">{{$comments->total()}}</span>)</h3>
+         <div class="gridComments" id="gridComments" style="padding-top: 15px;"></div>
+            @if($comments->total() > 0)
+               @foreach($comments as $comment)
+                  <div class="col-thumb">
+                      <div class="media media-comments position-relative" id="comment77">
+                          <span class="pull-left">
+                              <a href="https://purepng.com/brandonprater">
+                                  <img class="media-object img-circle" height="50" src="{{asset('img/default.jpg')}}" width="50">
+                                  </img>
+                              </a>
+                          </span>
+                          <div class="media-body media-body-comments">
+                              <h4 class="media-heading col-thumb">
+                                 {{$comment->username}}
+                              </h4>
+                              <p class="comments-p mentions-links">
+                                  {{$comment->comment}}
+                              </p>
+                              <div class="btn-block margin-top-5">
+                                  <small class="timeAgo small-comment" data="{{$comment->comment_date}}">
+                                    {{$comment->comment_date->diffForHumans()}}
+                                  </small>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+               @endforeach
+               {{ $comments->links() }}
+            @else               
+               <div class="btn-block text-center noComments">
+                  <i class="fa fa-comments-o fa-5x"></i>
+               </div>
+               <h3 class="margin-top-none text-center no-result row-margin-20 noComments">
+                  No comments yet
+               </h3>
+            @endif
+
             <hr />
-            <div class="alert alert-loggin text-center alert-custom" role="alert">
+            <!--<div class="alert alert-loggin text-center alert-custom" role="alert">
                You must be logged in to comment this photo
                <a href="https://purepng.com/register" class="btn btn-xs btn-success">Sign Up</a>
                <a href="https://purepng.com/login">Login</a>
-            </div>
+            </div> -->
          </div>
       </div>
       <div class="col-md-3">
          <div class="panel panel-default">
             <div class="panel-body">
                <div class="media none-overflow">
-<!--                   <div class="media-left">
+               <!--<div class="media-left">
                      <a href="https://purepng.com/PureNetwork">
                      <img class="media-object img-circle" src="public/avatar/purenetwork-114984932140w6vdcdjkl.png" alt="PureNetwork's Profile Avatar" width="50" height="50">
                      </a>
@@ -119,15 +150,11 @@
                </li>
             </ul>
          </div>
-         <div class="btn-group btn-block margin-bottom-20 btn-block text-center">
+<!--          <div class="btn-group btn-block margin-bottom-20 btn-block text-center">
             <a rel="noopener" onClick="ga('send', 'event', 'Button', 'klick',
                'Pin_to_Pinterest_Big_View' ,1);" style="background-color: #bd081c;border-color: #bd081c;" class="btn btn-main btn-lg btn-block custom-rounded" href='https://www.pinterest.com/pin/create/button/?url=http://purepng.com/photo/30610/pink-heart&amp;media=http://purepng.com/public/uploads/large/pink-heart-u4q.png&amp;description=Pink%20Heart%20PNG%20Image' target="_blank"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzBweCIgd2lkdGg9IjMwcHgiIHZpZXdCb3g9Ii0xIC0xIDMxIDMxIj48Zz48cGF0aCBkPSJNMjkuNDQ5LDE0LjY2MiBDMjkuNDQ5LDIyLjcyMiAyMi44NjgsMjkuMjU2IDE0Ljc1LDI5LjI1NiBDNi42MzIsMjkuMjU2IDAuMDUxLDIyLjcyMiAwLjA1MSwxNC42NjIgQzAuMDUxLDYuNjAxIDYuNjMyLDAuMDY3IDE0Ljc1LDAuMDY3IEMyMi44NjgsMC4wNjcgMjkuNDQ5LDYuNjAxIDI5LjQ0OSwxNC42NjIiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+PHBhdGggZD0iTTE0LjczMywxLjY4NiBDNy41MTYsMS42ODYgMS42NjUsNy40OTUgMS42NjUsMTQuNjYyIEMxLjY2NSwyMC4xNTkgNS4xMDksMjQuODU0IDkuOTcsMjYuNzQ0IEM5Ljg1NiwyNS43MTggOS43NTMsMjQuMTQzIDEwLjAxNiwyMy4wMjIgQzEwLjI1MywyMi4wMSAxMS41NDgsMTYuNTcyIDExLjU0OCwxNi41NzIgQzExLjU0OCwxNi41NzIgMTEuMTU3LDE1Ljc5NSAxMS4xNTcsMTQuNjQ2IEMxMS4xNTcsMTIuODQyIDEyLjIxMSwxMS40OTUgMTMuNTIyLDExLjQ5NSBDMTQuNjM3LDExLjQ5NSAxNS4xNzUsMTIuMzI2IDE1LjE3NSwxMy4zMjMgQzE1LjE3NSwxNC40MzYgMTQuNDYyLDE2LjEgMTQuMDkzLDE3LjY0MyBDMTMuNzg1LDE4LjkzNSAxNC43NDUsMTkuOTg4IDE2LjAyOCwxOS45ODggQzE4LjM1MSwxOS45ODggMjAuMTM2LDE3LjU1NiAyMC4xMzYsMTQuMDQ2IEMyMC4xMzYsMTAuOTM5IDE3Ljg4OCw4Ljc2NyAxNC42NzgsOC43NjcgQzEwLjk1OSw4Ljc2NyA4Ljc3NywxMS41MzYgOC43NzcsMTQuMzk4IEM4Ljc3NywxNS41MTMgOS4yMSwxNi43MDkgOS43NDksMTcuMzU5IEM5Ljg1NiwxNy40ODggOS44NzIsMTcuNiA5Ljg0LDE3LjczMSBDOS43NDEsMTguMTQxIDkuNTIsMTkuMDIzIDkuNDc3LDE5LjIwMyBDOS40MiwxOS40NCA5LjI4OCwxOS40OTEgOS4wNCwxOS4zNzYgQzcuNDA4LDE4LjYyMiA2LjM4NywxNi4yNTIgNi4zODcsMTQuMzQ5IEM2LjM4NywxMC4yNTYgOS4zODMsNi40OTcgMTUuMDIyLDYuNDk3IEMxOS41NTUsNi40OTcgMjMuMDc4LDkuNzA1IDIzLjA3OCwxMy45OTEgQzIzLjA3OCwxOC40NjMgMjAuMjM5LDIyLjA2MiAxNi4yOTcsMjIuMDYyIEMxNC45NzMsMjIuMDYyIDEzLjcyOCwyMS4zNzkgMTMuMzAyLDIwLjU3MiBDMTMuMzAyLDIwLjU3MiAxMi42NDcsMjMuMDUgMTIuNDg4LDIzLjY1NyBDMTIuMTkzLDI0Ljc4NCAxMS4zOTYsMjYuMTk2IDEwLjg2MywyNy4wNTggQzEyLjA4NiwyNy40MzQgMTMuMzg2LDI3LjYzNyAxNC43MzMsMjcuNjM3IEMyMS45NSwyNy42MzcgMjcuODAxLDIxLjgyOCAyNy44MDEsMTQuNjYyIEMyNy44MDEsNy40OTUgMjEuOTUsMS42ODYgMTQuNzMzLDEuNjg2IiBmaWxsPSIjYmQwODFjIj48L3BhdGg+PC9nPjwvc3ZnPg==" style="height:20px;" alt="Pinterest Logo"> Pin to Pinterest</a>
-         </div>
-         <script async src="../../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
-         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9373286643303244" data-ad-slot="5947934327" data-ad-format="auto"></ins>
-         <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-         </script>
+         </div> -->
+
          <div class="panel panel-default">
             <div class="panel-body">
                <h5><i class="fa fa-thumbs-up myicon-right" aria-hidden="true"></i> <strong>Like PurePNG on Facebook</strong></h5>
@@ -143,7 +170,7 @@
             <li class="list-group-item"> 
                <span class="badge data-xs-img">
                   @if($photo->category)
-                     <a href="https://purepng.com/category/clipart" title="Clipart">{{$post->category->name}}</a>
+                     <a href="{{route('show_category', $post->category->slug)}}" title="{{$post->category->name}}">{{$post->category->name}}</a>
                   @endif
                </span> 
                Category
@@ -159,9 +186,9 @@
          </div>
          <div class="panel panel-default">
             <div class="panel-body">
-               <h5><i class="icon icon-Drop myicon-right" aria-hidden="true"></i> <strong>Color Palette</strong></h5>
-               @foreach($post->color_plattes as $color_platte)
-                  <a title="#{{$color_platte->color}}" href="https://purepng.com/colors/{{$color_platte->color}}" aria-label="More Images with #{{$color_platte->color}} Color" class="colorPalette showTooltip" style="background-color: #{{$color_platte->color}};"></a>
+               <h5><i class="fa fa-tint" aria-hidden="true"></i> <strong>Color Palette</strong></h5>
+               @foreach($post->color_palettes as $color_palette)
+                  <a title="#{{$color_palette->color}}" href="https://purepng.com/colors/{{$color_palette->color}}" aria-label="More Images with #{{$color_palette->color}} Color" class="colorPalette showTooltip" style="background-color: #{{$color_palette->color}};"></a>
                </a>
              @endforeach
             </div>
