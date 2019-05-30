@@ -10,7 +10,7 @@ use App\Comment;
 use Intervention\Image\ImageManager;
 use \BrianMcdo\ImagePalette\ImagePalette as ImagePalette;
 use Illuminate\Support\Collection;
-
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -225,9 +225,12 @@ Route::middleware(['simpleAuth'])->group(function () {
 
 		$photo = Post::where('id', $request->comment['post_id'])->first();
 
+		$comment_data = $request->comment;
 
-		$comment = new Comment($request->comment);
-		//dd($photo->comment);
+		if(!isset($request->comment['comment_date'])){
+			$comment_data['comment_date'] = Carbon::now()->toDateTimeString();
+		}
+		$comment = new Comment($comment_data);
 
 		$photo->comments()->save($comment);
 

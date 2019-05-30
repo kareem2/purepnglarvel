@@ -18,6 +18,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 	public function __construct(){
+		date_default_timezone_set('UTC');
 		$categories = Category::withCount('posts')->limit(config('custom.categories_count'))->get();
 
 
