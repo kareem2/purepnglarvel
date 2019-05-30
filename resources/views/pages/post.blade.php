@@ -56,8 +56,8 @@
                                   {{$comment->comment}}
                               </p>
                               <div class="btn-block margin-top-5">
-                                  <small class="timeAgo small-comment" data="{{$comment->comment_date}}">
-                                    {{$comment->comment_date->diffForHumans()}}
+                                  <small class="timeAgo small-comment">
+                                    {{$comment->comment_date}}
                                   </small>
                               </div>
                           </div>
@@ -151,13 +151,13 @@
                'Pin_to_Pinterest_Big_View' ,1);" style="background-color: #bd081c;border-color: #bd081c;" class="btn btn-main btn-lg btn-block custom-rounded" href='https://www.pinterest.com/pin/create/button/?url=http://purepng.com/photo/30610/pink-heart&amp;media=http://purepng.com/public/uploads/large/pink-heart-u4q.png&amp;description=Pink%20Heart%20PNG%20Image' target="_blank"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzBweCIgd2lkdGg9IjMwcHgiIHZpZXdCb3g9Ii0xIC0xIDMxIDMxIj48Zz48cGF0aCBkPSJNMjkuNDQ5LDE0LjY2MiBDMjkuNDQ5LDIyLjcyMiAyMi44NjgsMjkuMjU2IDE0Ljc1LDI5LjI1NiBDNi42MzIsMjkuMjU2IDAuMDUxLDIyLjcyMiAwLjA1MSwxNC42NjIgQzAuMDUxLDYuNjAxIDYuNjMyLDAuMDY3IDE0Ljc1LDAuMDY3IEMyMi44NjgsMC4wNjcgMjkuNDQ5LDYuNjAxIDI5LjQ0OSwxNC42NjIiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+PHBhdGggZD0iTTE0LjczMywxLjY4NiBDNy41MTYsMS42ODYgMS42NjUsNy40OTUgMS42NjUsMTQuNjYyIEMxLjY2NSwyMC4xNTkgNS4xMDksMjQuODU0IDkuOTcsMjYuNzQ0IEM5Ljg1NiwyNS43MTggOS43NTMsMjQuMTQzIDEwLjAxNiwyMy4wMjIgQzEwLjI1MywyMi4wMSAxMS41NDgsMTYuNTcyIDExLjU0OCwxNi41NzIgQzExLjU0OCwxNi41NzIgMTEuMTU3LDE1Ljc5NSAxMS4xNTcsMTQuNjQ2IEMxMS4xNTcsMTIuODQyIDEyLjIxMSwxMS40OTUgMTMuNTIyLDExLjQ5NSBDMTQuNjM3LDExLjQ5NSAxNS4xNzUsMTIuMzI2IDE1LjE3NSwxMy4zMjMgQzE1LjE3NSwxNC40MzYgMTQuNDYyLDE2LjEgMTQuMDkzLDE3LjY0MyBDMTMuNzg1LDE4LjkzNSAxNC43NDUsMTkuOTg4IDE2LjAyOCwxOS45ODggQzE4LjM1MSwxOS45ODggMjAuMTM2LDE3LjU1NiAyMC4xMzYsMTQuMDQ2IEMyMC4xMzYsMTAuOTM5IDE3Ljg4OCw4Ljc2NyAxNC42NzgsOC43NjcgQzEwLjk1OSw4Ljc2NyA4Ljc3NywxMS41MzYgOC43NzcsMTQuMzk4IEM4Ljc3NywxNS41MTMgOS4yMSwxNi43MDkgOS43NDksMTcuMzU5IEM5Ljg1NiwxNy40ODggOS44NzIsMTcuNiA5Ljg0LDE3LjczMSBDOS43NDEsMTguMTQxIDkuNTIsMTkuMDIzIDkuNDc3LDE5LjIwMyBDOS40MiwxOS40NCA5LjI4OCwxOS40OTEgOS4wNCwxOS4zNzYgQzcuNDA4LDE4LjYyMiA2LjM4NywxNi4yNTIgNi4zODcsMTQuMzQ5IEM2LjM4NywxMC4yNTYgOS4zODMsNi40OTcgMTUuMDIyLDYuNDk3IEMxOS41NTUsNi40OTcgMjMuMDc4LDkuNzA1IDIzLjA3OCwxMy45OTEgQzIzLjA3OCwxOC40NjMgMjAuMjM5LDIyLjA2MiAxNi4yOTcsMjIuMDYyIEMxNC45NzMsMjIuMDYyIDEzLjcyOCwyMS4zNzkgMTMuMzAyLDIwLjU3MiBDMTMuMzAyLDIwLjU3MiAxMi42NDcsMjMuMDUgMTIuNDg4LDIzLjY1NyBDMTIuMTkzLDI0Ljc4NCAxMS4zOTYsMjYuMTk2IDEwLjg2MywyNy4wNTggQzEyLjA4NiwyNy40MzQgMTMuMzg2LDI3LjYzNyAxNC43MzMsMjcuNjM3IEMyMS45NSwyNy42MzcgMjcuODAxLDIxLjgyOCAyNy44MDEsMTQuNjYyIEMyNy44MDEsNy40OTUgMjEuOTUsMS42ODYgMTQuNzMzLDEuNjg2IiBmaWxsPSIjYmQwODFjIj48L3BhdGg+PC9nPjwvc3ZnPg==" style="height:20px;" alt="Pinterest Logo"> Pin to Pinterest</a>
          </div> -->
 
-         <div class="panel panel-default">
+<!--          <div class="panel panel-default">
             <div class="panel-body">
                <h5><i class="fa fa-thumbs-up myicon-right" aria-hidden="true"></i> <strong>Like PurePNG on Facebook</strong></h5>
                <div id="fb-root"></div>
                <div rel="noopener" class="fb-like" data-href="https://www.facebook.com/Purepng-187287722034914/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
             </div>
-         </div>
+         </div> -->
          <ul class="list-group">
             <li class="list-group-item"><i class="icon-info myicon-right"></i> <strong>Details</strong></li>
             <li class="list-group-item"> <span class="badge data-xs-img">{{$post->created_at->format('M d, Y')}}</span> Published on</li>
@@ -173,13 +173,13 @@
             </li>
             <li href="#" class="list-group-item"> <span class="badge data-xs-img">{{$photo_size}}</span> File size</li>
          </ul>
-         <div class="panel panel-default">
+<!--          <div class="panel panel-default">
             <div class="panel-body">
                <h5><i class="fa fa-creative-commons myicon-right" aria-hidden="true"></i> <strong>License and Use</strong></h5>
                <small class="text-muted"><i class="glyphicon glyphicon-ok myicon-right"></i> Free for commercial use</small>
                <small class="btn-block text-muted"><i class="glyphicon glyphicon-remove myicon-right"></i> No attribution required</small>
             </div>
-         </div>
+         </div> -->
          <div class="panel panel-default">
             <div class="panel-body">
                <h5><i class="fa fa-tint" aria-hidden="true"></i> <strong>Color Palette</strong></h5>
@@ -189,7 +189,7 @@
              @endforeach
             </div>
          </div>
-         <div class="panel panel-default">
+<!--          <div class="panel panel-default">
             <div class="panel-body">
                <h5 class="pull-left margin-zero" style="line-height: inherit;"><i class="icon icon-Share myicon-right" aria-hidden="true"></i> <strong>Share</strong></h5>
                <ul class="list-inline pull-right margin-zero">
@@ -199,7 +199,7 @@
                   <li><a title="WhatsApp" rel="noopener" href="whatsapp://send?text=http://purepng.com/photo/30610&text=Pink Heart" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
                </ul>
             </div>
-         </div>
+         </div> -->
          <div class="margin-top-20"></div>
       </div>
    </div>

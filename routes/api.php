@@ -195,8 +195,43 @@ Route::middleware(['simpleAuth'])->group(function () {
 	    if($category->save()){
 	    	return response()->json($category, 202);
 	    }
+	});
 
-	});	
+	Route::post('/photo/delete', function(Request $request){
+
+
+		$photo = Post::where('id', $request->id)->first();//->delete();
+
+		$image_name = $photo->main_image;
+
+		if($photo->delete()){
+			$large_image_path = public_path(config('custom.images_main_path').$image_name);
+			$thumbnail_path = public_path(config('custom.thumbnail_main_path').$image_name);
+
+			if(File::exists($large_image_path)) {
+			    File::delete($large_image_path);
+			}
+
+			if(File::exists($thumbnail_path)) {
+			    File::delete($thumbnail_path);
+			}
+
+			return response()->json(['message' => 'photo deleted successfully']);
+		}
+	});
+
+	Route::post('/photo/comment/add', function(Request $request){
+
+
+		$photo = Post::where('id', $request->comment['post_id'])->first();
+
+
+		$comment = new Comment($request->comment);
+		//dd($photo->comment);
+
+		$photo->comments()->save($comment);
+
+	});
 
 	Route::get('/tags', function(Request $request){
 		return response()->json(Tag::all());

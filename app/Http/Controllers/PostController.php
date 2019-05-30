@@ -9,6 +9,7 @@ use App\Comment;
 use App\Tag;
 use View;
 use Intervention\Image\ImageManagerStatic as Image;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -16,6 +17,10 @@ class PostController extends Controller
 	public $thumbnail_read_path;
 
 	public function __construct(){
+		
+		$c = Carbon::now()->toDateTimeString();
+		$tz = Carbon::now()->timezone->getName();
+		//dd([$c, $tz]);
 		parent::__construct();
 		$this->images_folder = config('custom.images_read_path');
 		$this->thumbnail_read_path = config('custom.thumbnail_read_path');
@@ -26,7 +31,7 @@ class PostController extends Controller
 		$post = Post::with('category')->find($post_id);
 
 
-        $comments = Comment::where('post_id', $post_id)->paginate(config('custom.paging.comments'));
+        $comments = Comment::where('post_id', $post_id)->orderByDesc('comment_date')->paginate(config('custom.paging.comments'));
 
 	    if ( !\Cookie::get("{$post_id}_post_viewed") ) {
 
