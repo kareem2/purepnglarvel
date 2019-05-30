@@ -108,7 +108,7 @@
             <div class="panel-body padding-zero">
                <ul class="list-stats list-inline">
                   <li>
-                     <h4 class="btn-block text-center">{{$post-views_count}}</h4>
+                     <h4 class="btn-block text-center">{{$post->views_count}}</h4>
                      <small class="btn-block text-center text-muted">Views</small>
                   </li>
                   <li>
