@@ -108,15 +108,11 @@
             <div class="panel-body padding-zero">
                <ul class="list-stats list-inline">
                   <li>
-                     <h4 class="btn-block text-center">389</h4>
+                     <h4 class="btn-block text-center">{{$post-views_count}}</h4>
                      <small class="btn-block text-center text-muted">Views</small>
                   </li>
                   <li>
-                     <h4 class="btn-block text-center" id="countLikes">0</h4>
-                     <small class="btn-block text-center text-muted">Likes</small>
-                  </li>
-                  <li>
-                     <h4 class="btn-block text-center">71</h4>
+                     <h4 class="btn-block text-center">{{$post-downloads_count}}</h4>
                      <small class="btn-block text-center text-muted">Downloads</small>
                   </li>
                </ul>
