@@ -57,7 +57,7 @@
                               </p>
                               <div class="btn-block margin-top-5">
                                   <small class="timeAgo small-comment">
-                                    {{$comment->comment_date}}
+                                    {{$comment->comment_date->diffforhumans()}}
                                   </small>
                               </div>
                           </div>
