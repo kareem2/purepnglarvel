@@ -171,24 +171,29 @@ class ApiController extends BaseController
 
 	public function addCategory(Request $request)
 	{
-		$request->merge([
-		    'slug' => \Str::slug($request->name)
-		]);
+		try {
+			$request->merge([
+			    'slug' => \Str::slug($request->name)
+			]);
 
-	    $request->validate([
-	        'name' => 'required',
-	        'slug' => 'unique:categories,slug',
-	    ]);
+		    $request->validate([
+		        'name' => 'required',
+		        'slug' => 'unique:categories,slug',
+		    ]);
 
-	    $slug = $request->slug;
+		    $slug = $request->slug;
 
-	    $category = new Category();
-	    $category->name = $request->name;
-	    $category->slug = $slug;
+		    $category = new Category();
+		    $category->name = $request->name;
+		    $category->slug = $slug;
 
-	    if($category->save()){
-	    	return response()->json($category, 202);
-	    }		
+		    if($category->save()){
+		    	return response()->json($category, 202);
+		    }			
+		} catch (Exception $e) {
+			return response()->json(['Server Errors'], 500);
+		}
+		
 	}
 
 	public function removePhoto(Request $request)
