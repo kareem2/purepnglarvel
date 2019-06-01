@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <a href="https://purepng.com/">
-                    <img alt="PurePNG Logo" class="logo" src="https://purepng.com/public/img/logo.svg">
+                <a href="{{route('home')}}">
+                    <img alt="PurePNG Logo" class="logo" src="{{asset('img/logo.svg')}}">
                     </img>
                 </a>
                 <p class="margin-tp-xs">
@@ -42,48 +42,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-3 margin-tp-xs">
-                <h4 class="margin-top-zero font-default">
-                    About
-                </h4>
-                <ul class="list-unstyled">
-                    <li>
-                        <a class="link-footer" href="https://purepng.com/page/terms-of-service">
-                            Terms
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-footer" href="https://purepng.com/page/support">
-                            Support
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-footer" href="https://purepng.com/page/press-resources">
-                            Brand Resources
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-footer" href="https://purepng.com/page/privacy-policy">
-                            Privacy Policy
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-footer" href="https://purepng.com/page/upload-png">
-                            Upload PNG
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-footer" href="https://status.purepng.com/">
-                            Status
-                        </a>
-                    </li>
-                    <li>
-                        <a class="link-footer" href="https://howtomedia.co/threads/91/">
-                            Changelog
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            
             <div class="col-md-3 margin-tp-xs">
                 <h4 class="margin-top-zero font-default">
                     Categories
@@ -108,10 +67,11 @@
                 </ul>
             </div>
             <div class="col-md-2 margin-tp-xs">
+                <!--
                 <h4 class="margin-top-zero font-default">
                     Links
                 </h4>
-       <!--          <ul class="list-unstyled">
+                 <ul class="list-unstyled">
                     <li>
                         <a class="link-footer" href="https://purepng.com/login">
                             Login

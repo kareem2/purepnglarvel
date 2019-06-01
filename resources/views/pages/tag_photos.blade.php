@@ -1,8 +1,6 @@
 @extends('layouts.default')
 @section('title')
-<title>
-    Free transparent Car PNG images Download |  PurePNG | Free transparent CC0 PNG Image Library
-</title>
+<title>Free transparent {{$tag->name}} PNG images Download |  PurePNG | Free transparent CC0 PNG Image Library</title>
 @stop
 @section('content')
     <div class="jumbotron md index-header jumbotron_set jumbotron-cover" style="background: url('http://purepng.com/public/uploads/medium/indian-wedding-girl-pca.png') center center no-repeat #d1d1d1 !important;">

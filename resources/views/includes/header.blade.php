@@ -51,33 +51,14 @@
                             </a>
                         </li>
                         <li>
-                            <a href="https://purepng.com/popular">
+                            <a href="{{route('popular_photos')}}">
                                 <i class="fa fa-fire"></i> 
                                 Popular
                             </a>
                         </li>
-                        <li>
-                            <a href="https://purepng.com/featured">
-                                <i class="fa fa-thumbs-up"></i> 
-                                Featured
-                            </a>
-                        </li>
+
                         <li class="divider" role="separator">
                         </li>
-                  <!--       <li>
-                            <a href="https://purepng.com/members">
-                                <i class="icon icon-Users myicon-right">
-                                </i>
-                                Members
-                            </a>
-                        </li> -->
-                   <!--      <li>
-                            <a href="https://purepng.com/collections">
-                                <i class="fa fa-folder-open-o myicon-right">
-                                </i>
-                                Collections
-                            </a>
-                        </li> -->
                         <li>
                             <a href="{{route('tags')}}">
                                 <i class="fa fa-tags">

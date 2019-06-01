@@ -5,7 +5,7 @@
       </h5>
       @if($photo->user)
       <h5 class="text-overflow author-label mg-bottom-xs" title="{{$photo->user->name}}">
-         <!-- <img src="public/avatar/purenetwork-114984932140w6vdcdjkl.png" alt="User" class="img-circle" style="width: 20px; height: 20px; display: inline-block; margin-right: 5px;"> -->
+         <img src="{{asset('img/avatars/'.$photo->user->avatar)}}" alt="User" class="img-circle" style="width: 20px; height: 20px; display: inline-block; margin-right: 5px;">
          <em>{{$photo->user->name}}</em>
       </h5> 
       @endif

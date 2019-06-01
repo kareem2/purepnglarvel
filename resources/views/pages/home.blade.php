@@ -1,8 +1,6 @@
 @extends('layouts.default')
 @section('title')
-<title>
-    title
-</title>
+<title> PurePNG | Free transparent CC0 PNG Image Library</title>
 @stop
 @section('content')
 <div class="jumbotron index-header jumbotron_set jumbotron-cover ">
@@ -73,15 +71,13 @@
             <div class="col-md-6 border-stats">
                 <h1 class="btn-block text-center class-montserrat margin-bottom-zero none-overflow">
                     <span class=".numbers-with-commas counter">
-                        24
+                        {{$downloads_count}}
                     </span>
-                    M+
+                    +
                 </h1>
-                <a alt="Most Downloads" href="https://purepng.com/most/downloads">
                     <h5 class="btn-block text-center class-montserrat subtitle-color text-uppercase">
                         Downloads
                     </h5>
-                </a>
             </div>
             <div class="col-md-6 border-stats">
                 <h1 class="btn-block text-center class-montserrat margin-bottom-zero none-overflow">
@@ -90,11 +86,9 @@
                     </span>
                     +
                 </h1>
-                <a alt="View all" href="https://purepng.com/latest">
                     <h5 class="btn-block text-center class-montserrat subtitle-color text-uppercase">
                         Stock Images
                     </h5>
-                </a>
             </div>
         </div>
     </div>

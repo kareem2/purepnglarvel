@@ -1,8 +1,6 @@
 @extends('layouts.default')
 @section('title')
-<title>
-    Free transparent Car PNG images Download |  PurePNG | Free transparent CC0 PNG Image Library
-</title>
+<title> PurePNG | Free transparent CC0 PNG Image Library</title>
 @stop
 @section('content')
 <div class="container margin-bottom-40">

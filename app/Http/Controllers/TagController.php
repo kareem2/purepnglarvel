@@ -15,12 +15,15 @@ class TagController extends Controller
 		parent::__construct();
 	}
 
-	public function index(){
+	public function index(Request $request){
 
-		$categories = Tag::withCount('post_tags')
-		->paginate(config('custom.paging.tags_index'));
+		if(\Cache::has('tags') && config('custom.use_cache') == true && is_null($request->page)){
+			$tags = \Cache::get('tags');
+		}else{
+			$tags = Tag::withCount('post_tags')->paginate(config('custom.paging.tags_index'));
+		}
 
-		$data['tags'] = $categories;
+		$data['tags'] = $tags;
 		return View::make('pages.tags', $data);
 	
 

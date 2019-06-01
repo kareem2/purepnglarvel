@@ -15,17 +15,29 @@ class HomeController extends Controller
 		parent::__construct();
 	}
 
-    public function index(){
+    public function index(Request $request){
  
- 		$latest_photos = Post::with('user')->limit(config('custom.main_page_latest_photos'))->get();
+		if(config('custom.use_cache') == true){
 
- 		$photos_count = Post::count();
+			$latest_photos = \Cache::get('main_page_latest_photos');
+			$photos_count = \Cache::get('total_photos');
+			$tags_sample = \Cache::get('sample_tags');
+			$downloads_count = \Cache::get('total_downloads');
 
- 		$tags_sample = Tag::limit(8)->get();
+
+		}else{
+	 		$latest_photos = Post::with('user')->limit(config('custom.main_page_latest_photos'))->get();
+	 		$photos_count = Post::count();
+	 		$tags_sample = Tag::limit(8)->get();
+	 		$downloads_count = Post::sum('downloads_count');
+		}
+
+
 
  		$data['latest_photos'] = $latest_photos;
  		$data['photos_count'] = $photos_count;
  		$data['tags_sample'] = $tags_sample;
+ 		$data['downloads_count'] = $downloads_count;
     	return view('pages.home', $data);
 
     }

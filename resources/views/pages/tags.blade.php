@@ -1,8 +1,6 @@
 @extends('layouts.default')
 @section('title')
-<title>
-    Free transparent Car PNG images Download |  PurePNG | Free transparent CC0 PNG Image Library
-</title>
+<title>Tags -  PurePNG | Free transparent CC0 PNG Image Library</title>
 @stop
 @section('content')
 <div class="jumbotron md index-header jumbotron_set jumbotron-cover">

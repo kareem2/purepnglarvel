@@ -1,8 +1,6 @@
 @extends('layouts.default')
 @section('title')
-<title>
-    Free transparent Car PNG images Download |  PurePNG | Free transparent CC0 PNG Image Library
-</title>
+<title>Categories -  PurePNG | Free transparent CC0 PNG Image Library</title>
 @stop
 @section('content')
 	<div class="jumbotron md index-header jumbotron_set jumbotron-cover">
@@ -24,7 +22,7 @@
 	        	<a href="{{route('show_category', $category->slug)}}">
 	        	<div style="height: 300px;border:1px solid #efefef;">
 
-		                <img style="width: auto;margin: 0 auto;max-height: 85%;" alt="{{$category->name}}" class="img-responsive btn-block custom-rounded" src="{{asset($thumbnail_read_path.$category->samplePost()->main_image)}}">
+		                <img style="width: auto;margin: 0 auto;max-height: 85%;" alt="{{$category->name}}" class="img-responsive btn-block custom-rounded" src="{{asset($thumbnail_read_path.$category->thumbnail_image)}}">
 		                </img>
 		            
 		            <h1 class="title-services" style="font-size: 14px;">

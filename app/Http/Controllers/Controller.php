@@ -18,8 +18,12 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 	public function __construct(){
-		date_default_timezone_set('UTC');
-		$categories = Category::withCount('posts')->limit(config('custom.categories_count'))->get();
+		if(\Cache::has('header_categories') && config('custom.use_cache') == true){
+			$categories = \Cache::get('header_categories');
+		}else{
+			$categories = Category::withCount('posts')->limit(config('custom.categories_count'))->get();
+		}
+		
 
 
 		$menu_categories = $categories->slice(0, config('custom.menu_categories_count'));

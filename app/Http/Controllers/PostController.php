@@ -30,6 +30,8 @@ class PostController extends Controller
 
 		$post = Post::with('category')->find($post_id);
 
+		if(!$post)
+			abort(404, 'The resource you are looking for could not be found');
 
         $comments = Comment::where('post_id', $post_id)->orderByDesc('comment_date')->paginate(config('custom.paging.comments'));
 
@@ -99,14 +101,35 @@ class PostController extends Controller
 
     }
 
-    public function latest(){
-    	$photos = Post::with('user')->orderBy('created_at', 'desc')->paginate(config('custom.paging.latest'));
-    	//dd($photos);
+    public function latest(Request $request){
+		
+		if(\Cache::has('latest') && config('custom.use_cache') == true && is_null($request->page)){
+			$photos = \Cache::get('latest');
+		}else{
+			$photos = Post::with('user')->orderBy('created_at', 'desc')->paginate(config('custom.paging.latest'));
+		}
+
+    	
 
 		$data['photos'] = $photos;
 		$data['thumbnail_read_path'] = $this->thumbnail_read_path;
 
     	return View::make('pages.latest_photos', $data);	
+    }
+
+    public function popular(Request $request){
+
+		if(\Cache::has('popular') && config('custom.use_cache') == true && is_null($request->page)){
+			$photos = \Cache::get('popular');
+		}else{
+			$photos = Post::with('user')->orderBy('downloads_count', 'desc')->paginate(config('custom.paging.popular'));
+		}
+
+
+		$data['photos'] = $photos;
+		$data['thumbnail_read_path'] = $this->thumbnail_read_path;
+
+    	return View::make('pages.popular_photos', $data);	
     }
 
     public function download($photo_id, $title, $size){

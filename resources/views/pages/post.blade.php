@@ -43,10 +43,8 @@
                   <div class="col-thumb">
                       <div class="media media-comments position-relative" id="comment77">
                           <span class="pull-left">
-                              <a href="https://purepng.com/brandonprater">
-                                  <img class="media-object img-circle" height="50" src="{{asset('img/default.jpg')}}" width="50">
-                                  </img>
-                              </a>
+                               <img class="media-object img-circle" height="50" src="{{asset('img/default.jpg')}}" width="50">
+                               </img>
                           </span>
                           <div class="media-body media-body-comments">
                               <h4 class="media-heading col-thumb">
@@ -86,12 +84,12 @@
          <div class="panel panel-default">
             <div class="panel-body">
                <div class="media none-overflow">
-               <!--<div class="media-left">
-                     <a href="https://purepng.com/PureNetwork">
-                     <img class="media-object img-circle" src="public/avatar/purenetwork-114984932140w6vdcdjkl.png" alt="PureNetwork's Profile Avatar" width="50" height="50">
+               <div class="media-left">
+                     <a href="{{route('user', $post->user->name)}}">
+                     <img class="media-object img-circle" src="{{asset('img/avatars/'.$post->user->avatar)}}" alt="{{$post->user->name}}'s Profile Avatar" width="50" height="50">
                      </a>
                   </div>
- -->                  <div class="media-body">
+                   <div class="media-body">
                      @if($post->user)
                         <a href="{{route('user', $post->user->name)}}" class="text-username font-default">
                            <h4 class="media-heading">{{$post->user->name}}</h4>
@@ -111,6 +109,10 @@
                      <h4 class="btn-block text-center">{{$post->views_count}}</h4>
                      <small class="btn-block text-center text-muted">Views</small>
                   </li>
+                  <li>
+                     <h4 class="btn-block text-center">{{$post->likes_count}}</h4>
+                     <small class="btn-block text-center text-muted">Likes</small>
+                  </li>                  
                   <li>
                      <h4 class="btn-block text-center">{{$post->downloads_count}}</h4>
                      <small class="btn-block text-center text-muted">Downloads</small>

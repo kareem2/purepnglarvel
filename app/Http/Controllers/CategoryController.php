@@ -15,17 +15,22 @@ class CategoryController extends Controller
 		parent::__construct();
 	}
 
-	public function index(){
+	public function index(Request $request){
 
-		$categories = Category::withCount('posts')
-		->paginate(config('custom.paging.categories_index'));
+		if(\Cache::has('categories') && config('custom.use_cache') == true && is_null($request->page)){
+			$categories = \Cache::get('categories');
+		}else{
+			$nested = Post::select('main_image')
+			       ->whereNotNull('main_image')
+			       ->where('category_id', \DB::raw("categories.id"))
+			       ->limit(1)
+			       ->toSql();
 
-		// $categories->load(['posts' => function ($query) {
-		//     $query->whereNotNull('main_image')->limit(1);
-		// }]);
+			$categories = Category::selectRaw(\DB::raw("categories.*, ({$nested}) as thumbnail_image"))
+			       ->paginate(config('custom.paging.categories_index'));
 
-		// dd([$categories[1], $categories[1]]);
-		//dd($categories[1]->posts->first()->main_image);
+			//$categories = Category::withCount('posts')->paginate(config('custom.paging.categories_index'));
+		}
 
 
 		$data['categories'] = $categories;

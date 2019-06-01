@@ -16,17 +16,7 @@ return [
 
 	'supported_types' => ['png', 'jpeg', 'jpg', 'jpeg'],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Last Domains Cache Size
-    |--------------------------------------------------------------------------
-    |
-    | This array used to define the size for each domain block
-    |
-    */    
-    'cache_size' => [
-        'tags' => 10
-    ],	
+    'use_cache' => true,
 
     'height_resize_factor' => [
         'large' => 0,
@@ -37,12 +27,14 @@ return [
     'paging' => [
         'categories_index' => 5,
         'category_photos' => 5,
-        'photo_related' => 10,
+        'photo_related' => 20,
         'tags_index' => 100,
         'tag_photos' => 20,
         'latest' => 15,
+        'popular' => 15,
         'search_results' => 20,
         'comments' => 5,
+        'user_photos' => 2,
     ],
 
     'categories_count' => 15,

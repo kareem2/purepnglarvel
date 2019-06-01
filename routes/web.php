@@ -24,6 +24,8 @@ Route::get('/tag/{tag_name}', 'PostController@tagPhotos')->name('tag_photos_by_n
 Route::get('/tag/id/{tag_name}', 'PostController@tagPhotos')->name('tag_photos_by_id');
 Route::get('/tags', 'TagController@index')->name('tags');
 Route::get('/latest', 'PostController@latest')->name('latest_photos');
+Route::get('/popular', 'PostController@popular')->name('popular_photos');
 Route::get('/categories', 'CategoryController@index')->name('categories');
 Route::get('/category/{category_name}', 'CategoryController@show')->name('show_category');
 Route::get('/search', 'TagController@search')->name('tags_search');
+Route::get('/user/{user_name}', 'UserController@show')->name('user');
