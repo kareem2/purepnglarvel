@@ -172,7 +172,7 @@ class ApiController extends BaseController
 	public function addCategory(Request $request)
 	{
 		$request->merge([
-		    'slug' => Str::slug($request->name)
+		    'slug' => \Str::slug($request->name)
 		]);
 
 	    $request->validate([
