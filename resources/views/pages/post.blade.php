@@ -186,7 +186,7 @@
             <div class="panel-body">
                <h5><i class="fa fa-tint" aria-hidden="true"></i> <strong>Color Palette</strong></h5>
                @foreach($post->color_palettes as $color_palette)
-                  <a title="#{{$color_palette->color}}" href="https://purepng.com/colors/{{$color_palette->color}}" aria-label="More Images with #{{$color_palette->color}} Color" class="colorPalette showTooltip" style="background-color: #{{$color_palette->color}};"></a>
+                  <a title="#{{$color_palette->color}}" href="{{route('color', $color_palette->color)}}" aria-label="More Images with #{{$color_palette->color}} Color" class="colorPalette showTooltip" style="background-color: #{{$color_palette->color}};"></a>
                </a>
              @endforeach
             </div>

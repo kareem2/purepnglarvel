@@ -101,6 +101,18 @@ class PostController extends Controller
 
     }
 
+    public function postsByColor($color_code)
+    {
+
+    	$photos = Post::whereHas('color_palettes', function ($query) use ($color_code) {
+            $query->where('post_color_palette.color', $color_code);
+        })->with('user')->paginate(10);
+
+    	$data['photos'] = $photos;
+    	$data['color_code'] = $color_code;
+
+        return View::make('pages.color_photos', $data);
+    }
     public function latest(Request $request){
 		
 		if(\Cache::has('latest') && config('custom.use_cache') == true && is_null($request->page)){

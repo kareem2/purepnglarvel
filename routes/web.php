@@ -23,6 +23,7 @@ Route::get('/user/{user_name}', 'UserController@show')->name('user');
 Route::get('/tag/{tag_name}', 'PostController@tagPhotos')->name('tag_photos_by_name');
 Route::get('/tag/id/{tag_name}', 'PostController@tagPhotos')->name('tag_photos_by_id');
 Route::get('/tags', 'TagController@index')->name('tags');
+Route::get('/color/{color_code}', 'PostController@postsByColor')->name('color');
 Route::get('/latest', 'PostController@latest')->name('latest_photos');
 Route::get('/popular', 'PostController@popular')->name('popular_photos');
 Route::get('/categories', 'CategoryController@index')->name('categories');

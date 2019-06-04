@@ -262,7 +262,7 @@ class ApiController extends BaseController
 		       ->limit(1)
 		       ->toSql();
 
-		$categories = Category::selectRaw(\DB::raw("categories.*, ({$nested}) as thumbnail_image"))
+		$categories = Category::withCount('posts')->selectRaw(\DB::raw("categories.*, ({$nested}) as thumbnail_image"))
 		       ->paginate(config('custom.paging.categories_index'));
 		$categories->withPath(route('categories'));
 		\Cache::forever('categories', $categories);
