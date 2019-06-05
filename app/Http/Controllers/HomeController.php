@@ -17,14 +17,13 @@ class HomeController extends Controller
 
     public function index(Request $request){
  
-		if(config('custom.use_cache') == true){
+		if(config('custom.use_cache') == true && \Cache::has('main_page_latest_photos') && \Cache::has('total_photos') && \Cache::has('sample_tags') && \Cache::has('total_downloads')){
 
 			$latest_photos = \Cache::get('main_page_latest_photos');
 			$photos_count = \Cache::get('total_photos');
 			$tags_sample = \Cache::get('sample_tags');
 			$downloads_count = \Cache::get('total_downloads');
-
-
+			
 		}else{
 	 		$latest_photos = Post::with('user')->limit(config('custom.main_page_latest_photos'))->get();
 	 		$photos_count = Post::count();

@@ -167,7 +167,7 @@
             <li class="list-group-item"> <span class="badge data-xs-img">{{$photo_width}}x{{$photo_height}}</span> Resolution</li>
             <li class="list-group-item"> 
                <span class="badge data-xs-img">
-                  @if($photo->category)
+                  @if($post->category)
                      <a href="{{route('show_category', $post->category->slug)}}" title="{{$post->category->name}}">{{$post->category->name}}</a>
                   @endif
                </span> 
