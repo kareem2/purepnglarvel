@@ -29,7 +29,6 @@ class CategoryController extends Controller
 			$categories = Category::withCount('posts')->selectRaw(\DB::raw("categories.*, ({$nested}) as thumbnail_image"))
 			       ->paginate(config('custom.paging.categories_index'));
 
-			//$categories = Category::withCount('posts')->paginate(config('custom.paging.categories_index'));
 		}
 
 

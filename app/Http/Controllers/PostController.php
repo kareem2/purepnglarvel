@@ -28,6 +28,11 @@ class PostController extends Controller
 
     public function show($post_id){
 
+	    $data['photo_size'] = null;
+	    $data['photo_width'] = null;
+	    $data['photo_height'] = null;
+	    $data['related_photos'] = null;
+
 		$post = Post::with('category')->find($post_id);
 
 		if(!$post)
@@ -51,17 +56,19 @@ class PostController extends Controller
 		
 	    $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
 
-	    $bytes = max(filesize(public_path($image_url)), 0); 
+	    $bytes = max(@filesize(public_path($image_url)), 0); 
 	    $pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
 	    $pow = min($pow, count($units) - 1); 
 
 	    $bytes /= pow(1024, $pow);
 
-	    $image_resolution = getimagesize(public_path($image_url));
+	    $image_resolution = @getimagesize(public_path($image_url));
 
 	    $data['photo_size'] = round($bytes, 2) . ' ' . $units[$pow]; 
 	    $data['photo_width'] = $image_resolution[0];
 	    $data['photo_height'] = $image_resolution[1];
+
+
 	    $data['related_photos'] = $related_photos;
 	    $data['comments'] = $comments;
 	    $data['thumbnail_read_path'] = $this->thumbnail_read_path;

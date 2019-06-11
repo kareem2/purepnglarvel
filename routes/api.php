@@ -35,6 +35,8 @@ Route::middleware(['simpleAuth'])->group(function () {
 	Route::post('/post/add', 'ApiController@addPost');
 
 	Route::get('/categories', 'ApiController@getCategories');
+	
+	Route::post('/user/add', 'ApiController@addUsers');
 
 	Route::post('/categories/add', 'ApiController@addCategory');
 

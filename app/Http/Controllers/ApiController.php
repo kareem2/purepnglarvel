@@ -159,6 +159,29 @@ class ApiController extends BaseController
 		return response()->json($post, 202);		
 	}
 
+	public function addUsers(Request $request)
+	{
+		$users = $request->users;
+
+		if($users){
+
+			foreach ($users as $key => $user) {
+
+				if(!isset($users[$key]['avatar'])){
+
+					$users[$key]['avatar'] = 'default.jpg';
+
+				}
+
+			}
+
+			if(User::insert($users))
+				return response()->json(['message' => 'Users added'], 202);
+		}
+
+		return response()->json(['Server Errors'], 500);
+	}
+
 	public function getCategories(Request $request)
 	{
 		return response()->json(Category::all(), 202);

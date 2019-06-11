@@ -31,7 +31,7 @@ class Controller extends BaseController
 		$footer_categories = $categories->slice(0, config('custom.footer_categories_count'));
 
 		$thumbnail_read_path = config('custom.thumbnail_read_path');
-
+		
 		View::share('menu_categories', $menu_categories);
 		View::share('main_page_categories', $main_page_categories);
 		View::share('footer_categories', $footer_categories);

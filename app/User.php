@@ -37,6 +37,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $attributes = [
+        'avatar' => 'default.jpg',
+    ];
+
     public function posts()
     {
         return $this->hasMany(Post::class);
