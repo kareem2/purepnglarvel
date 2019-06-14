@@ -23,18 +23,33 @@ class ApiController extends BaseController
 	{
 		//dd(4);
 	    $request->validate([
-	        'user_id' => 'required_without:user_name|exists:users,id',
-	        'user_name' => 'required_without:user_id',
+	        'user_id' => 'required_without_all:user_name,random_user|exists:users,id',
+	        'user_name' => 'required_without_all:user_id,random_user',
+	        'random_user' => 'required_without_all:user_id,user_name',
 	        'image_name' => 'required',
 	        'title' => 'required',
 	        'base64_image' => 'required|is_supported_type',
 	        'category_id' => 'required_without:category_name|exists:categories,id',
 	        'category_name' => 'required_without:category_id',
 	    ]);
-
+//User::inRandomOrder()->get();
 		$post = new Post();
 
-		$post->user_id = $request->user_id;
+		$user_id = null;
+
+		if($request->random_user){
+			$user = User::inRandomOrder()->first();
+			if($user){
+				$user_id = $user->id;
+			}else{
+				return response()->json(['Server Errors'], 500);
+			}
+		}else{
+			$user_id = $request->user_id;
+		}
+
+		$post->user_id = $user_id;
+		
 		$post->title = $request->title;
 		$post->description = $request->description;
 		if($request->views_count){
@@ -74,10 +89,8 @@ class ApiController extends BaseController
 
 		if($saved_image){
 
-
 			// Check user:
-			if(is_null($request->user_id)){
-
+			if(is_null($user_id)){
 			    $user = User::firstOrCreate(
 			    	['name' => \Str::slug($request->user_name)],
 			    	['name' => $request->user_name]);
