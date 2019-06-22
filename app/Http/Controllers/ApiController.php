@@ -29,10 +29,11 @@ class ApiController extends BaseController
 	        'image_name' => 'required',
 	        'title' => 'required',
 	        'base64_image' => 'required|is_supported_type',
+	        'base64_avatar' => 'is_supported_type',
 	        'category_id' => 'required_without:category_name|exists:categories,id',
 	        'category_name' => 'required_without:category_id',
 	    ]);
-//User::inRandomOrder()->get();
+
 		$post = new Post();
 
 		$user_id = null;
@@ -113,8 +114,16 @@ class ApiController extends BaseController
 			// Save post
 			if($post->save()){
 
-				$tags = [];
+				$large_image_path = public_path(config('custom.images_main_path').$image_name);
+				$thumbnail =  Image::make($large_image_path);
 
+				$thumbnail->resize(null, config('custom.thumbnail_height'), function ($constraint) {
+				    $constraint->aspectRatio();
+				});
+				$thumbnail->save(public_path(config('custom.thumbnail_main_path').$image_name));
+
+
+				$tags = [];
 				foreach ($request->tags as $post_tag) {
 				    $tag = Tag::firstOrCreate(
 				    	['slug' => \Str::slug($post_tag)],
@@ -122,27 +131,10 @@ class ApiController extends BaseController
 
 				    $tags[] = $tag->id;
 				}
-
-
-
 				$post->tags()->sync($tags);
 
-				$large_image_path = public_path(config('custom.images_main_path').$image_name);
 				
 				
-				$palette = new ImagePalette($large_image_path, 1, 5);	
-
-				$colors = $palette->colors;
-
-				$palettes_collection = new Collection();
-				foreach ($colors as $color) {
-					$palettes_collection->push(new ColorPalette(['color' => str_replace('#', '', $color)]));
-				}
-
-				$post->color_palettes()->saveMany($palettes_collection);
-				
-
-
 				if($request->comments){
 					$comments_collection = new Collection();
 
@@ -153,20 +145,18 @@ class ApiController extends BaseController
 					$post->comments()->saveMany($comments_collection);					
 				}
 
+				//die();
 
+				$palette = new ImagePalette($large_image_path, 50, 5);	
+				$colors = $palette->colors;
+				$palettes_collection = new Collection();
+				foreach ($colors as $color) {
+					$palettes_collection->push(new ColorPalette(['color' => str_replace('#', '', $color)]));
+				}
+				$post->color_palettes()->saveMany($palettes_collection);
 
-				$thumbnail =  Image::make($large_image_path);
-
-				$thumbnail->resize(null, config('custom.thumbnail_height'), function ($constraint) {
-				    $constraint->aspectRatio();
-				});
-
-
-				$thumbnail->save(public_path(config('custom.thumbnail_main_path').$image_name));
 
 			}
-
-
 		}
 
 		return response()->json($post, 202);		
