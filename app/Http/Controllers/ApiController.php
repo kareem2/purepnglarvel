@@ -14,6 +14,8 @@ use \BrianMcdo\ImagePalette\ImagePalette as ImagePalette;
 use Illuminate\Support\Collection;
 use Carbon\Carbon;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Validator;
+
 
 
 class ApiController extends BaseController
@@ -169,13 +171,28 @@ class ApiController extends BaseController
 		if($users){
 
 			foreach ($users as $key => $user) {
+				Validator::make($users[$key], [
+				    'avatar' => 'is_supported_type',
+				    'name' => 'required',
+				])->validate();
+			}
+
+			foreach ($users as $key => $user) {
+
+				Validator::make($users[$key], [
+				    'avatar' => 'is_supported_type',
+				    'name' => 'required',
+				])->validate();
 
 				if(!isset($users[$key]['avatar'])){
 
-					$users[$key]['avatar'] = 'default.jpg';
+					$avatar = 'default.jpg';
 
+				}else{
+					$avatar = $this->_resizeAndSaveEncodedImage($users[$key]['avatar'], $users[$key]['name'], public_path(config('custom.avatar_path')), config('custom.avatar_width'), config('custom.avatar_height'));
 				}
 
+				$users[$key]['avatar'] = $avatar;
 			}
 
 			if(User::insert($users))
@@ -307,4 +324,27 @@ class ApiController extends BaseController
 
 		return response()->json(['message' => 'Cache is successfully updated'], 202);
 	}
+
+	private function _resizeAndSaveEncodedImage($encoded_image, $name, $destination, $width, $height){
+		$decoded_image = base64_decode($encoded_image);
+	
+		$file = finfo_open();
+		$image_type = finfo_buffer($file, $decoded_image, FILEINFO_MIME_TYPE);
+		$image_type = explode('/', $image_type);
+		$image_type = $image_type[1];
+
+		$image_name = \Str::slug($name) . '.' . $image_type;
+
+		$thumbnail =  Image::make($encoded_image);
+
+		$thumbnail->resize($width, $height); 
+
+		$thumbnail->save($destination.$image_name);
+
+		return $image_name;
+
+	}
 }
+
+		//config('custom.avatar_width'), config('custom.avatar_height')
+		// public_path(config('custom.avatar_path')

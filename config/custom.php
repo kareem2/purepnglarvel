@@ -113,7 +113,7 @@ return [
     'paging' => [
         'categories_index' => 5, // for 'categories' route
         'category_photos' => 5, // for 'show_category' route
-        'photo_related' => 20, // for 'photo' and 'photo_with_title' routes
+        'photo_related' => 5, // for 'photo' and 'photo_with_title' routes
         'tags_index' => 100, // for 'tags' route
         'tag_photos' => 20, // for 'tag_photos_by_name' route
         'latest' => 15, // for 'latest_photos' route
@@ -164,5 +164,13 @@ return [
     |
     */  
     'main_page_latest_photos' => 20,
+
+
+    'avatar_width' => 150,
+
+    'avatar_height' => 150,
+
+    'avatar_path' => 'img/avatars/',
+
 
 ];
