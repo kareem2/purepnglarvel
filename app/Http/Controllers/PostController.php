@@ -49,7 +49,7 @@ class PostController extends Controller
 
 		$related_photos = $post->relatedPhotos(config('custom.paging.photo_related'));
 
-		$image_url = $this->images_folder.$post->main_image;
+		$image_url = config('custom.images_main_path').$post->main_image;
 
 		$post->main_image_url = asset($image_url);	
 		$post->user = $post->user()->withCount('posts')->first();
@@ -64,9 +64,12 @@ class PostController extends Controller
 
 	    $image_resolution = @getimagesize(public_path($image_url));
 
+	    $resized_resolutions = $this->_getImageResizedResolutions(public_path($image_url));
+
 	    $data['photo_size'] = round($bytes, 2) . ' ' . $units[$pow]; 
 	    $data['photo_width'] = $image_resolution[0];
 	    $data['photo_height'] = $image_resolution[1];
+	    $data['resized_resolutions'] = $resized_resolutions;
 
 
 	    $data['related_photos'] = $related_photos;
@@ -191,7 +194,22 @@ class PostController extends Controller
 		return response($image->encoded)->cookie(
 			"photo_{$photo_id}_downloaded", true, 60 * 24 * 30
 		);
+    }
 
+    private function _getImageResizedResolutions($image_path){
+		$image =  Image::make($image_path);
+		
+		$resolutions = array();
 
+		$resize_factors = config('custom.height_resize_factor');
+
+		foreach ($resize_factors as $key => $factor) {
+			$height = round($image->height() - ($image->height() * $factor / 100), 0);
+			$width = round($image->width() - ($image->width() * $factor / 100), 0);
+
+			$resolutions[$key] = "{$width}x{$height}";
+		}
+
+		return $resolutions;
     }
 }

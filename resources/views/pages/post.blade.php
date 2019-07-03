@@ -133,17 +133,17 @@
             <ul class="dropdown-menu arrowDownload dd-close btn-block">
                <li>
                   <a href="{{route('photo_download', [$post->id, $post->title, 'small'])}}">
-                     <span class="label label-default myicon-right">S</span>Small <span class="pull-right">.</span>
+                     <span class="label label-default myicon-right">S</span>Small <span class="pull-right">{{$resized_resolutions['small']}}</span>
                   </a>
                </li>
                <li>
                   <a href="{{route('photo_download', [$post->id, $post->title, 'medium'])}}">
-                     <span class="label label-default myicon-right">M</span>Medium <span class="pull-right">.</span>
+                     <span class="label label-default myicon-right">M</span>Medium <span class="pull-right">{{$resized_resolutions['medium']}}</span>
                   </a>
                </li>
                <li>
                   <a href="{{route('photo_download', [$post->id, $post->title, 'large'])}}">
-                     <span class="label label-default myicon-right">L</span>Large <span class="pull-right">.</span>
+                     <span class="label label-default myicon-right">L</span>Large <span class="pull-right">{{$resized_resolutions['large']}}</span>
                   </a>
                </li>
             </ul>

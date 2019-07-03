@@ -45,7 +45,7 @@ class ApiController extends BaseController
 			if($user){
 				$user_id = $user->id;
 			}else{
-				return response()->json(['Server Errors'], 500);
+				return response()->json(['exception' => 'databaseError', 'message' => 'Users table has no data to select random user'], 500);
 			}
 		}else{
 			$user_id = $request->user_id;
@@ -214,7 +214,7 @@ class ApiController extends BaseController
 
 	public function addCategory(Request $request)
 	{
-		try {
+		// try {
 			$request->merge([
 			    'slug' => \Str::slug($request->name)
 			]);
@@ -233,9 +233,9 @@ class ApiController extends BaseController
 		    if($category->save()){
 		    	return response()->json($category, 202);
 		    }			
-		} catch (Exception $e) {
-			return response()->json(['Server Errors'], 500);
-		}
+		// } catch (Exception $e) {
+		// 	return response()->json(['Server Errors'], 500);
+		// }
 		
 	}
 

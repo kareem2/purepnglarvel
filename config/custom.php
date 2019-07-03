@@ -27,7 +27,7 @@ return [
     | 'images_main_path' config parameter
     |
     */    
-	'images_read_path' => '/uploads/large/',
+	'images_read_path' => '/uploads/large2/',
 	
     /*
     |--------------------------------------------------------------------------
