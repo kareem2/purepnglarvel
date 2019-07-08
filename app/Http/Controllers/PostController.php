@@ -51,7 +51,7 @@ class PostController extends Controller
 
 		$image_url = config('custom.images_main_path').$post->main_image;
 
-		$post->main_image_url = asset($image_url);	
+		$post->main_image_url = asset(config('custom.images_read_path').$post->main_image);	
 		$post->user = $post->user()->withCount('posts')->first();
 		
 	    $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
